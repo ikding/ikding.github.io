@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Software engineer salary: a statistical approach - I-Kang Ding's site</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="https://ikding.github.io/software-engineer-salary-statistics.html">
+
+        <meta name="author" content="I-Kang Ding" />
+        <meta name="keywords" content="career" />
+        <meta name="description" content="Question What percentage of software engineers make at least $200,000? Answer Edit 2016-03-31: The bureau of labor statistics published the 2015 annual data on 3/30. The original answer included only 2014 data, but the updated answer include both 2014 and 2015. I originally was interested in this question …" />
+
+        <meta property="og:site_name" content="I-Kang Ding's site" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Software engineer salary: a statistical approach"/>
+        <meta property="og:url" content="https://ikding.github.io/software-engineer-salary-statistics.html"/>
+        <meta property="og:description" content="Question What percentage of software engineers make at least $200,000? Answer Edit 2016-03-31: The bureau of labor statistics published the 2015 annual data on 3/30. The original answer included only 2014 data, but the updated answer include both 2014 and 2015. I originally was interested in this question …"/>
+        <meta property="article:published_time" content="2016-03-31" />
+            <meta property="article:section" content="career" />
+            <meta property="article:tag" content="career" />
+            <meta property="article:author" content="I-Kang Ding" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://ikding.github.io/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="https://ikding.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://ikding.github.io/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://ikding.github.io/theme/css/style.css" type="text/css"/>
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://ikding.github.io/" class="navbar-brand">
+I-Kang Ding's site            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="https://ikding.github.io/pages/about-me.html">
+                             About Me
+                          </a></li>
+                         <li><a href="https://ikding.github.io/pages/resume.html">
+                             Resume
+                          </a></li>
+                        <li class="active">
+                            <a href="https://ikding.github.io/category/career.html">Career</a>
+                        </li>
+                        <li >
+                            <a href="https://ikding.github.io/category/data_science.html">Data_science</a>
+                        </li>
+                        <li >
+                            <a href="https://ikding.github.io/category/solar.html">Solar</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://ikding.github.io/software-engineer-salary-statistics.html"
+                       rel="bookmark"
+                       title="Permalink to Software engineer salary: a statistical approach">
+                        Software engineer salary: a statistical approach
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2016-03-31T00:00:00-04:00"> 2016-03-31 (Thu)</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://ikding.github.io/tag/career.html">career</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <div class="section" id="question">
+<h2>Question</h2>
+<p>What percentage of software engineers make at least $200,000?</p>
+</div>
+<div class="section" id="answer">
+<h2>Answer</h2>
+<p>Edit 2016-03-31: The bureau of labor statistics published the 2015 annual data on 3/30. The original answer included only 2014 data, but the updated answer include both 2014 and 2015.</p>
+<hr class="docutils" />
+<p>I originally was interested in this question and clicked &quot;Follow&quot;, but then the curiosity got the better of me so I decided to do the analysis myself.</p>
+<p>Before answering this question, I'd like to make a few qualifier statements:</p>
+<ol class="arabic simple">
+<li>Let's assume you are asking about $200,000 base salary, not the total package (with 401k match, RSUs, ESPPs, bonuses... etc) - those things can vary widely</li>
+<li>You didn't say which geographical area you are looking for, so let me assume that it is the United States.</li>
+<li>I tried to find &quot;official&quot; sources as opposed to anecdotal statements (&quot;yeah, my friend says all his/her friends in software are just raking in money&quot;)</li>
+</ol>
+<p>It turned out that U.S. Bureau of Labor Statistics (BLS) published, on a regular basis, the <a class="reference external" href="http://www.bls.gov/oes/home.htm">Occupational Employment Statistics</a> that breaks down the wages of each occupation by region. The most recent data is from May 2015 and can be found <a class="reference external" href="http://www.bls.gov/oes/current/oessrcma.htm">here</a>.</p>
+<p>The html table only contains the mean annual salary of each occupation by area, which is a good start, but we still need the distribution! Fortunately, that number is in the a zipped file that you can download. Using quantiles of the annual wage (10%, 25%, 50%, 75%, 90%), if we assume that the wages follow normal distribution (which may be a big if), we can calculate the metrics you are interested in, for the top 9 metros with the highest software engineer employment.</p>
+<p>Percentage of software engineers that makes at least $200,000 (base salary).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="30%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">metro_area</th>
+<th class="head">2014</th>
+<th class="head">2015</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Atlanta</td>
+<td>0.06%</td>
+<td>0.09%</td>
+</tr>
+<tr><td>Boston</td>
+<td>0.84%</td>
+<td>0.74%</td>
+</tr>
+<tr><td>Chicago</td>
+<td>0.01%</td>
+<td>0.07%</td>
+</tr>
+<tr><td>Dallas</td>
+<td>0.03%</td>
+<td>0.06%</td>
+</tr>
+<tr><td>New York</td>
+<td>1.13%</td>
+<td>1.51%</td>
+</tr>
+<tr><td>San Francisco</td>
+<td>2.09%</td>
+<td>1.96%</td>
+</tr>
+<tr><td>San Jose</td>
+<td>6.47%</td>
+<td>8.70%</td>
+</tr>
+<tr><td>Seattle</td>
+<td>0.35%</td>
+<td>0.59%</td>
+</tr>
+<tr><td>Washington</td>
+<td>1.06%</td>
+<td>1.59%</td>
+</tr>
+</tbody>
+</table>
+<p>How much base salary do you need to be the 1% engineer (in terms of base salary) in a particular metro.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="30%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">metro_area</th>
+<th class="head">2014</th>
+<th class="head">2015</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Atlanta</td>
+<td>$ 169,763</td>
+<td>$ 173,444</td>
+</tr>
+<tr><td>Boston</td>
+<td>$ 197,591</td>
+<td>$ 195,898</td>
+</tr>
+<tr><td>Chicago</td>
+<td>$ 161,412</td>
+<td>$ 171,802</td>
+</tr>
+<tr><td>Dallas</td>
+<td>$ 167,756</td>
+<td>$ 172,522</td>
+</tr>
+<tr><td>New York</td>
+<td>$ 201,857</td>
+<td>$ 206,651</td>
+</tr>
+<tr><td>San Francisco</td>
+<td>$ 211,968</td>
+<td>$ 210,098</td>
+</tr>
+<tr><td>San Jose</td>
+<td>$ 232,678</td>
+<td>$ 240,306</td>
+</tr>
+<tr><td>Seattle</td>
+<td>$ 188,763</td>
+<td>$ 194,143</td>
+</tr>
+<tr><td>Washington</td>
+<td>$ 200,862</td>
+<td>$ 207,315</td>
+</tr>
+</tbody>
+</table>
+<p>As a bonus, we can also plot the normal distribution of salary in each metro:</p>
+<img alt="nominal-salary-distribution" class="align-center" src="https://qph.fs.quoracdn.net/main-qimg-60df3d6a971d5e8526f892f7a3c6b8b0" />
+<p>A few other observations:</p>
+<ol class="arabic simple">
+<li>San Jose (more precisely, &quot;San Jose-Sunnyvale-Santa Clara, CA MSA&quot;) appears to have the best base salary. A whopping 8.7% of software engineers there earn &gt; $200,000 base salary in 2015, compare with &lt; 0.1% for Atlanta, Chicago and Dallas!</li>
+<li>San Francisco (&quot;San Francisco-San Mateo-Redwood City, CA Metropolitan Division&quot;) has comparable median salary with Seattle and Boston, but distribution is wider - perhaps because of many startups in the area?</li>
+<li>Software engineers in Atlanta, Chicago and Dallas are underpaid related to other big metros (but they also have lower cost of living)</li>
+</ol>
+<p>However, if you take into account the cost of living, than the story changed - drastically. After adjusting the salary for cost of living (using
+<a class="reference external" href="https://www.coli.org/">C2ER COLI</a> annual average data for 2014 and 2015, respectively), here is what the salary distribution looks like. Dallas and maybe Atlanta now appears to have the highest earning (adjusted for cost-of-living), with Seattle and San Jose area close behind. SF and NY folks appear to get the shorter end of the stick because their cost of living is so expensive.</p>
+<img alt="coli-adjusted-salary-distribution" class="align-center" src="https://qph.fs.quoracdn.net/main-qimg-b0b7db148172874b6751c43596e53a75" />
+<p>But if you really adjusted for cost of living, the metro with highest median wage for software engineer (with at least 2,000 total employment) is neither of the 9 big metros above. Instead, here is the ranking - I am surprised myself!</p>
+<p>Metro area (coli-adjusted median annual salary) - 2014:</p>
+<ol class="arabic simple">
+<li>Durham-Chapel Hill, NC ($110,404)</li>
+<li>Huntsville, AL ($108,334)</li>
+<li>Colorado Springs, CO ($106,387)</li>
+<li>Baltimore-Towson, MD ($106,359)</li>
+<li>San Antonio-New Braunfels, TX ($103,386)</li>
+<li>Fort Worth-Arlington, TX ($102,289)</li>
+<li>Austin-Round Rock-San Marcos TX ($101,521)</li>
+<li>Charlotte-Gastonia-Rock Hill NC-SC ($101,248)</li>
+<li>St. Louis MO-IL ($100,953)</li>
+<li>Houston-Sugar Land-Baytown TX (99,725)</li>
+</ol>
+<p>Metro area (coli-adjusted median annual salary) - 2015:</p>
+<ol class="arabic simple">
+<li>Huntsville AL ($115,853)</li>
+<li>Colorado Springs CO ($112,156)</li>
+<li>Raleigh NC ($105,147)</li>
+<li>Houston-The Woodlands-Sugar Land TX ($104,649)</li>
+<li>Fort Worth-Arlington TX ($104,539)</li>
+<li>St. Louis MO-IL ($104,012)</li>
+<li>Austin-Round Rock TX ($103,381)</li>
+<li>San Antonio-New Braunfels TX ($103,278)</li>
+<li>Charlotte-Concord-Gastonia NC-SC ($102,624)</li>
+<li>Baltimore-Columbia-Towson MD ($101,774)</li>
+</ol>
+<p>(Originally answered on quora: <a class="reference external" href="https://www.quora.com/What-percentage-of-software-engineers-make-at-least-200-000/answer/I-Kang-Ding">What percentage of software engineers make at least $200,000?</a>)</p>
+</div>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="https://ikding.github.io//images/profile.jpg"/>
+        </p>
+    <p>
+      <strong>About I-Kang Ding</strong><br/>
+        
+Data Science Manager at Capital One, focused on anti-fraud ML models.
+Stanford Engineering Ph.D.
+<br/>
+<br/>
+Interested in data science, renewable energy, and climate change.
+
+    </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://github.com/ikding"><i class="fa fa-github-square fa-lg"></i> GitHub</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/ikding"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/ikding"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Github -->
+<li class="list-group-item">
+  <h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+  <div id="gh_repos">
+    <p class="list-group-item">Status updating...</p>
+  </div>
+  <a href="https://github.com/ikding">@ikding</a> on GitHub
+</li>
+<!-- End Sidebar/Github -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2019 I-Kang Ding
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://ikding.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://ikding.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://ikding.github.io/theme/js/respond.min.js"></script>
+
+
+
+<!-- GitHub JS Code -->
+<script type="text/javascript">
+$(document).ready(function () {
+  if (!window.jXHR) {
+    var jxhr = document.createElement('script');
+    jxhr.type = 'text/javascript';
+    jxhr.src = 'https://ikding.github.io/theme/js/jXHR.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(jxhr, s);
+  }
+
+  github.showRepos({
+    user: 'ikding',
+    count: 3,
+    skip_forks: true,
+    target: '#gh_repos'
+  });
+});
+</script>
+<script src="https://ikding.github.io/theme/js/github.js" type="text/javascript"></script>
+<!-- End GitHub JS Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-19568221-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
