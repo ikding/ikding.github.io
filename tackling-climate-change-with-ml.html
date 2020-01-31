@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Tackling climate change with ML - I-Kang Ding's site</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="https://ikding.github.io/tackling-climate-change-with-ml.html">
+
+        <meta name="author" content="I-Kang Ding" />
+        <meta name="keywords" content="climate_tech,data_science" />
+        <meta name="description" content="I attended the NeurIPS 2019 Workshop - Tackling Climate Change with Machine Learning remotely on 2019-12-14. Below are the notes I took from the talks that I attended (which is just a small subset). Note: Many of the discussions on this workshop is a follow-up to the paper of the same …" />
+
+        <meta property="og:site_name" content="I-Kang Ding's site" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Tackling climate change with ML"/>
+        <meta property="og:url" content="https://ikding.github.io/tackling-climate-change-with-ml.html"/>
+        <meta property="og:description" content="I attended the NeurIPS 2019 Workshop - Tackling Climate Change with Machine Learning remotely on 2019-12-14. Below are the notes I took from the talks that I attended (which is just a small subset). Note: Many of the discussions on this workshop is a follow-up to the paper of the same …"/>
+        <meta property="article:published_time" content="2019-12-14" />
+            <meta property="article:section" content="climate_tech" />
+            <meta property="article:tag" content="climate_tech" />
+            <meta property="article:tag" content="data_science" />
+            <meta property="article:author" content="I-Kang Ding" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://ikding.github.io/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="https://ikding.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://ikding.github.io/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://ikding.github.io/theme/css/style.css" type="text/css"/>
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://ikding.github.io/" class="navbar-brand">
+I-Kang Ding's site            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/resume/">Resume</a></li>
+                    <li><a href="/tag/career.html">Career Development</a></li>
+                    <li><a href="/tag/data_science.html">Data Science</a></li>
+                    <li><a href="/tag/climate_tech.html">Climate Tech</a></li>
+                    <li><a href="/tag/misc.html">Misc</a></li>
+                    <li><a href="/archives.html">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://ikding.github.io/tackling-climate-change-with-ml.html"
+                       rel="bookmark"
+                       title="Permalink to Tackling climate change with ML">
+                        Tackling climate change with ML
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2019-12-14T00:00:00-05:00"> 2019-12-14 (Sat)</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://ikding.github.io/tag/climate_tech.html">climate_tech</a>
+        /
+	<a href="https://ikding.github.io/tag/data_science.html">data_science</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>I attended the NeurIPS 2019 Workshop - <a class="reference external" href="https://www.climatechange.ai/NeurIPS2019_workshop.html">Tackling Climate Change with Machine Learning</a> remotely on 2019-12-14. Below are the notes I took from the talks that I attended (which is just a small subset).</p>
+<p>Note: Many of the discussions on this workshop is a follow-up to the <a class="reference external" href="https://arxiv.org/abs/1906.05433">paper</a> of the same name, published on arXiv.</p>
+<p>The recording for the full workshop is available here: <a class="reference external" href="https://www.climatechange.ai/NeurIPS2019_workshop.html#schedule">https://www.climatechange.ai/NeurIPS2019_workshop.html#schedule</a></p>
+<div class="section" id="computation-systems-vs-climate-change-invited-talk-jeff-dean-google-ai">
+<h2>Computation + Systems vs Climate Change (Invited talk) - Jeff Dean (Google AI)</h2>
+<ul class="simple">
+<li>We are rapidly running out of carbon budget</li>
+<li>Google's (many) goals: getting to zero-carbon computation</li>
+<li>They have been able to use 100% renewable energy - averaged over entire year and all location</li>
+<li>Computation and ML can help with climate change</li>
+<li>Bayesian inference to drive interesting insights from observation in the world. Tensorflow probability framework is used to help research on nuclear fusion energy (in conjunction with TAE)</li>
+<li>Improving climate models: Simulation -&gt; TPU -&gt; Flood forecasting<ul>
+<li>&quot;Google flood forecasting initiative&quot;</li>
+<li>Flood forecasting in a nutshell: physical measurements -&gt; hydrologic models -&gt; hydraulic model (involving soil, elevation maps, etc)</li>
+<li>Hydraulic model is key in improving the flood forecasting</li>
+<li>Challenge: each doubling of resolution means compute goes up by 8X</li>
+<li>Solution: TPU can drastically speed up these sorts of computations</li>
+<li>Ultimate goal: flood warnings via Google Public Alerts</li>
+</ul>
+</li>
+<li>Simulation -&gt; Neural network proxies -&gt; Tensorflow -&gt; Weather prediction<ul>
+<li>PDE models the world: weather and climate, aerodynamics, combustion</li>
+<li>Neural network vs PDE simulation: NN has faster compute, higher spatial and temporal resolution. PDE has better medium to longer term precision.</li>
+</ul>
+</li>
+<li>&quot;Climate is the problem of 21st century&quot;</li>
+<li>Can we use technology to help people making better choices? (What information do people need to make good decisions?)<ul>
+<li>Environment insights explorer</li>
+<li>Project sunroof</li>
+</ul>
+</li>
+<li>Challenge to the community: build climate decision tools for AI &amp; ML, while tackling all the high leverage points</li>
+</ul>
+</div>
+<div class="section" id="leveraging-digitalization-for-urban-solutions-in-the-anthropocene-felix-creutzig-mcc-berlin-tu-berlin">
+<h2>Leveraging digitalization for urban solutions in the Anthropocene - Felix Creutzig (MCC Berlin, TU Berlin)</h2>
+<ul class="simple">
+<li>PV is now the least cost technology in many parts of the world</li>
+<li>Key barrier to widespread adoption is cost of finance (&gt; 10% interest rate)</li>
+<li>Solution: getting finance guarantees (loan guarantees, etc)</li>
+<li>12 Leverage points (place to intervene in a system, Donella Meadows, 1999)<ul>
+<li>#4: Foster self-organization</li>
+<li>#6: Create new feedback loop</li>
+<li>#7: Dampen positive feedback loop</li>
+<li>#10 leverage points: physical structure - urban layout that influence energy usage</li>
+</ul>
+</li>
+<li>What we plan now will translate into futures emissions</li>
+<li>Urban form determines usage and efficiency</li>
+<li>AI for geographically explicit solutions</li>
+<li>Optimize infrastructure<ul>
+<li>making use of unbiased and spatially complete remote sensing data</li>
+<li>Train with ground tough data</li>
+<li>use generalized learning to calculate spatialized energy use or intermediate metrics</li>
+<li>Model urban planning scenarios and predict associated GHG emissions</li>
+</ul>
+</li>
+<li>Example: block level energy prediction from ANN</li>
+<li>Example: estimate building energy use at scale</li>
+<li>Example: simulate role of fuel taxes</li>
+</ul>
+</div>
+<div class="section" id="panel-climate-change-a-grand-challenge-for-ml-yoshua-bengio-andrew-ng-carla-gomes-lester-mackey-jeff-dean">
+<h2>Panel: Climate Change: A Grand Challenge for ML - Yoshua Bengio, Andrew Ng, Carla Gomes, Lester Mackey, Jeff Dean</h2>
+<p><strong>Question</strong>: exciting developments in algorithms for climate change?</p>
+<p><strong>Answers</strong>:</p>
+<ul class="simple">
+<li>Andrew Ng: AI on small datasets. Example: transfer learning</li>
+<li>Carla Gomes: scale up solutions for unsupervised learning</li>
+</ul>
+<p><strong>Question</strong>: we read the paper, now what?</p>
+<p><strong>Answers</strong>:</p>
+<ul class="simple">
+<li>Andrew: Small steps. The problem is big and intimidating. It's important to take small steps.</li>
+<li>Jeff: be willing to collaborate with people who may know different things we do</li>
+<li>Yoshua: ML community has a tendency to tackle the problem with hubris. We need to approach problem with humility. Otherwise, we're at the risk of &quot;reinvent the wheel badly&quot;.</li>
+</ul>
+<p><strong>Question</strong>: reconciliation of misaligned incentives: e.g. # of publications vs. tonnes of CO2</p>
+<p><strong>Answers</strong>:</p>
+<ul class="simple">
+<li>Andrew: Our job is not done when we published a paper; our job is done when we actually make an impact. Lots of work needs to happen to deploy your fancy ML models to make real-world impacts.</li>
+<li>Yoshua: change your objective function! ML community also chase the ML publication.</li>
+<li>Andrew: find your principles!</li>
+</ul>
+<p><strong>Question</strong>: AI can also enable solutions to increase CO2 emission - e.g. help find more oil. What can we do about that?</p>
+<p><strong>Answers</strong>:</p>
+<ul class="simple">
+<li>Yoshua: &quot;public shaming&quot; :)</li>
+<li>Andrew: same question on the &quot;ethics of AI&quot; can be applied to many fields outside of climate change</li>
+</ul>
+<p><strong>Question</strong>: How do you make sure that AI solutions are actually matching the problem? How do you find solutions that maximize GHG emission reductions?</p>
+<p><strong>Answers</strong>:</p>
+<ul class="simple">
+<li>Yoshua: each of us should ask &quot;how I can help&quot;. As an AI researcher I think about how I can make impact to climate change. It's not for everyone though.</li>
+</ul>
+<p><strong>Question</strong>: What will you say to the room?</p>
+<p><strong>Answers</strong>:</p>
+<ul class="simple">
+<li>Yoshua: Climate change will also force us to ask and introspect how the things are done in our society / construct. Maybe this problem will force humanity to rethink how our society is organized.</li>
+<li>Andrew: &quot;Importance of community: genuinely celebrate other people's success. Each of us to spend time to help other on favors, celebrate others' successes, etc</li>
+<li>Carla: I have full respect for researchers in this climate change field because it's a difficult problem.</li>
+<li>Lester: don't be afraid to work on something that may not further your career, but help the planet.</li>
+<li>Jeff: ML is a great tool that we can use to help many fields. Be open to collaborate with others, celebrate successes when we can.</li>
+</ul>
+</div>
+<div class="section" id="panel-practical-challenges-in-applying-ml-to-climate-change-john-platt-jennifer-chayes-james-kelloway-marta-gonzalez-matt-horne">
+<h2>Panel: Practical Challenges in Applying ML to Climate Change - John Platt, Jennifer Chayes, James Kelloway, Marta Gonzalez, Matt Horne</h2>
+<p>Panelists:</p>
+<ul class="simple">
+<li>Jennifer Chayes - Microsoft research</li>
+<li>James Kelloway (National Grid ESO)</li>
+<li>John Platt - Google AI</li>
+<li>Matt Horne - City of Vancouver</li>
+<li>Marta Gonzalez (UC Berkeley, LBNL)</li>
+</ul>
+<p>Bottleneck for applying ML to climate change:</p>
+<ul class="simple">
+<li>Jennifer: Misaligned incentive as researcher to chart your own territory vs doing interdisciplinary work</li>
+<li>James Kelloway: think about how the ML solution you built is meant to be used in the real world. e.g. optimization solution can't really be implemented in a world where your solution involved having a human being tweaking a button 5 times a second</li>
+<li>Marta Gonzalez: data availability and inter-operability. Just because the data can be found / downloaded doesn't mean that they are ready to be used.</li>
+<li>John Platt: collaborate with other fields and speak on the same language takes a long time.</li>
+<li>Matt: balancing ML &amp; data needs vs privacy</li>
+</ul>
+<p>Two types of models:</p>
+<ul class="simple">
+<li>Discovery model, business intel models</li>
+<li>Model that makes automatic decisions - needs to be closely monitored and and maintained</li>
+</ul>
+<p>What keep you optimistic?</p>
+<p>Jennifer: there is this sea of change among young people (students in UC Berkeley) who wants to work on climate change, despite the fact that they are working on different fields.</p>
+<p>She doesn't think it'll be professors who drag students into the climate change research field; she thinks it'll be the other way around of having graduate students dragging their professors.</p>
+<p>Example:</p>
+<p>UC Berkeley stats PhD program asked incoming students what they would like to work on (free form, not multiple choice). A third of them said they wanted to work on climate change, and that's in statistics! (This is extremely encouraging)</p>
+</div>
+
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'ikding'; // required: replace example with your forum shortname
+
+            var disqus_config = function () {
+                this.language = "en";
+
+                        this.page.identifier = '2019-12-14-tackling-climate-change-with-ml';
+                        this.page.url = 'https://ikding.github.io/tackling-climate-change-with-ml.html';
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="https://ikding.github.io//images/profile.jpg"/>
+        </p>
+    <p>
+      <strong>About I-Kang Ding</strong><br/>
+        
+Data Science Manager at Capital One, focused on anti-fraud ML models.
+Stanford Engineering Ph.D.
+<br/>
+<br/>
+Interested in data science, renewable energy, and climate change.
+
+    </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://github.com/ikding"><i class="fa fa-github-square fa-lg"></i> GitHub</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/ikding"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/ikding"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Github -->
+<li class="list-group-item">
+  <h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+  <div id="gh_repos">
+    <p class="list-group-item">Status updating...</p>
+  </div>
+  <a href="https://github.com/ikding">@ikding</a> on GitHub
+</li>
+<!-- End Sidebar/Github -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2020 I-Kang Ding
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://ikding.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://ikding.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://ikding.github.io/theme/js/respond.min.js"></script>
+
+
+
+<!-- GitHub JS Code -->
+<script type="text/javascript">
+$(document).ready(function () {
+  if (!window.jXHR) {
+    var jxhr = document.createElement('script');
+    jxhr.type = 'text/javascript';
+    jxhr.src = 'https://ikding.github.io/theme/js/jXHR.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(jxhr, s);
+  }
+
+  github.showRepos({
+    user: 'ikding',
+    count: 3,
+    skip_forks: true,
+    target: '#gh_repos'
+  });
+});
+</script>
+<script src="https://ikding.github.io/theme/js/github.js" type="text/javascript"></script>
+<!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ikding'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-19568221-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
