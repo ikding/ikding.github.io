@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>My work-from-home environment setup - I-Kang Ding's site</title>
+    <title>My work from home setup - I-Kang Ding's site</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,18 +9,18 @@
 
 
 
-<link rel="canonical" href="https://ikding.github.io/my-work-from-home-environment-setup.html">
+<link rel="canonical" href="https://ikding.github.io/my-work-from-home-setup.html">
 
         <meta name="author" content="I-Kang Ding" />
         <meta name="keywords" content="data_science" />
-        <meta name="description" content="Documenting my environment setup, including shell, text editor, and more." />
+        <meta name="description" content="Documenting my work-from-home environment setup, including physical office, shell, text editor, and more." />
 
         <meta property="og:site_name" content="I-Kang Ding's site" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="My work-from-home environment setup"/>
-        <meta property="og:url" content="https://ikding.github.io/my-work-from-home-environment-setup.html"/>
-        <meta property="og:description" content="Documenting my environment setup, including shell, text editor, and more."/>
-        <meta property="article:published_time" content="2020-03-22" />
+        <meta property="og:title" content="My work from home setup"/>
+        <meta property="og:url" content="https://ikding.github.io/my-work-from-home-setup.html"/>
+        <meta property="og:description" content="Documenting my work-from-home environment setup, including physical office, shell, text editor, and more."/>
+        <meta property="article:published_time" content="2020-03-29" />
             <meta property="article:section" content="data_science" />
             <meta property="article:tag" content="data_science" />
             <meta property="article:author" content="I-Kang Ding" />
@@ -79,10 +79,10 @@ I-Kang Ding's site            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="https://ikding.github.io/my-work-from-home-environment-setup.html"
+                    <a href="https://ikding.github.io/my-work-from-home-setup.html"
                        rel="bookmark"
-                       title="Permalink to My work-from-home environment setup">
-                        My work-from-home environment setup
+                       title="Permalink to My work from home setup">
+                        My work from home setup
                     </a>
                 </h1>
             </header>
@@ -92,7 +92,7 @@ I-Kang Ding's site            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2020-03-22T00:00:00-04:00"> 2020-03-22 (Sun)</time>
+        <i class="fa fa-calendar"></i><time datetime="2020-03-29T00:00:00-04:00"> 2020-03-29 (Sun)</time>
     </span>
         <span class="label label-default">Read time</span>
         <span class="published">
@@ -108,6 +108,17 @@ I-Kang Ding's site            </a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p>I have been working as a data scientist for almost 8 years now, and have been working from home majority of the time for the past 5 years. I also started a new job recently and had to set up my new work laptop, so I am using this post to document the environments I use, for future reference:</p>
+<div class="section" id="standing-desk">
+<h2>Standing Desk</h2>
+<p>My work place provides adjustable standing desk that I can adjust the height between standing and sitting. While I'd love to have the same setup at home, I didn't want to spend upwards of $500 - $1,000 to get full-fledged, adjustable standing desk, so I'm going with off-the-shelf standing desk using IKEA parts for $22. The drawback is that I can <em>only</em> stand at my desk. (Reference: <a class="reference external" href="https://alphacolin.com/ikea-standing-desk-for-22-dollars/">A standing desk for $22</a>)</p>
+</div>
+<div class="section" id="computer-accessories">
+<h2>Computer accessories</h2>
+<p>I've been using with Apple's <a class="reference external" href="https://www.apple.com/shop/product/MQ052LL/A/magic-keyboard-with-numeric-keypad-us-english-silver">Magic Keyboard with Numeric Keypad</a> and <a class="reference external" href="https://www.apple.com/shop/product/MRMF2LL/A/magic-trackpad-2-space-gray">Magic Trackpad 2</a>.</p>
+<p>As for the external monitor, I find a wide screen super helpful for my own productivity. The one I used is <a class="reference external" href="https://www.dell.com/en-us/work/shop/dell-ultrasharp-34-curved-ultrawide-monitor-u3415w/apd/210-adtr">Dell 3415W 34-in Curved Ultrawide Monitor</a>.</p>
+<p>My physical setup looks like below. (Cat is not included in the bundle; sold separately)</p>
+<img alt="standing-desk" class="align-center" src="https://user-images.githubusercontent.com/7269845/77851142-636f4300-71a5-11ea-9c09-707de8320e48.jpg" style="width: 500px;" />
+</div>
 <div class="section" id="shell">
 <h2>Shell</h2>
 <p>I use <tt class="docutils literal">zsh</tt> shell with <a class="reference external" href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a> theme.</p>
@@ -115,17 +126,37 @@ I-Kang Ding's site            </a>
 </div>
 <div class="section" id="text-editor">
 <h2>Text editor</h2>
-<p>I have been using <a class="reference external" href="https://code.visualstudio.com">Visual Studio code</a> as my main text editor for a few years now, and has enjoyed the experience a lot. Below are the vscode extensions that I use on a regular basis. (My primary programming language is Python).</p>
-<ul class="simple">
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">autoDocstring</a>: Generates python docstrings</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a>: Spelling checker for source code</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">GitHub Pull Requests</a>: Pull Request Provider for GitHub</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a>: Supercharge the Git capabilities built into Visual Studio Code</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a>: Linting, Debugging (multi-threaded, remote), Intellisense, Jupyter Notebooks, code formatting, refactoring, unit tests, snippets, and more.</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">Remote Development</a>: Linting, Debugging (multi-threaded, remote), Intellisense, Jupyter Notebooks, code formatting, refactoring, unit tests, snippets, and more.</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext">reStructuredText</a>: reStructuredText language support (RST/ReST linter, preview, IntelliSense and more)</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=shuworks.vscode-table-formatter">Table Formatter</a>: Format table syntax of Markdown, Textile and reStructuredText.</li>
-<li><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons">vscode-icons</a>: Icons for Visual Studio Code</li>
+<p>Here is a screen shot of my vscode window.</p>
+<img alt="vscode-screen-shot" class="align-center" src="https://user-images.githubusercontent.com/7269845/77853344-b0591680-71b1-11ea-9488-a67385d67379.png" style="width: 600px;" />
+<p>I have been using <a class="reference external" href="https://code.visualstudio.com">Visual Studio code</a> as my main text editor for a few years now, and has enjoyed the experience a lot. Below are the vscode extensions that I use on a regular basis.</p>
+<ul>
+<li><p class="first"><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">autoDocstring</a>: Generates python docstrings</p>
+<img alt="vscode-autodocstring" class="align-center" src="https://raw.githubusercontent.com/NilsJPWerner/autoDocstring/master/images/demo.gif" style="width: 600px;" />
+</li>
+<li><p class="first"><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a>: Spelling checker for source code</p>
+<img alt="vscode-spell-checker" class="align-center" src="https://raw.githubusercontent.com/streetsidesoftware/vscode-spell-checker/master/packages/client/images/example.gif" style="width: 600px;" />
+</li>
+<li><p class="first"><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">GitHub Pull Requests</a>: Pull Request Provider for GitHub</p>
+<img alt="vscode-pull-request-github" class="align-center" src="https://github.com/Microsoft/vscode-pull-request-github/raw/master/.readme/demo.gif" style="width: 600px;" />
+</li>
+<li><p class="first"><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a>: Supercharge the Git capabilities built into Visual Studio Code</p>
+<img alt="vscode-gitlens" class="align-center" src="https://raw.githubusercontent.com/eamodio/vscode-gitlens/master/images/docs/gitlens-preview.gif" style="width: 600px;" />
+</li>
+<li><p class="first"><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a>: Linting, Debugging (multi-threaded, remote), Intellisense, Jupyter Notebooks, code formatting, refactoring, unit tests, snippets, and more.</p>
+<img alt="vscode-python" class="align-center" src="https://raw.githubusercontent.com/microsoft/vscode-python/master/images/ConfigureDebugger.gif" style="width: 600px;" />
+</li>
+<li><p class="first"><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack">Remote Development</a>: An extension pack that lets you open any folder in a container, on a remote machine, or in WSL and take advantage of VS Code's full feature set.</p>
+<img alt="vscode-remote-release" class="align-center" src="https://microsoft.github.io/vscode-remote-release/images/ssh-readme.gif" style="width: 600px;" />
+</li>
+<li><p class="first"><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext">reStructuredText</a>: reStructuredText language support (RST/ReST linter, preview, IntelliSense and more)</p>
+<img alt="vscode-restructuredtext" class="align-center" src="https://github.com/vscode-restructuredtext/vscode-restructuredtext/raw/master/images/main.gif" style="width: 600px;" />
+</li>
+<li><p class="first"><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=shuworks.vscode-table-formatter">Table Formatter</a>: Format table syntax of Markdown, Textile and reStructuredText.</p>
+<img alt="vscode-table-formatter" class="align-center" src="https://raw.githubusercontent.com/shuGH/vscode-table-formatter/master/res/complex_demo.gif" style="width: 600px;" />
+</li>
+<li><p class="first"><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons">vscode-icons</a>: Icons for Visual Studio Code</p>
+<img alt="vscode-icons" class="align-center" src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif" style="width: 600px;" />
+</li>
 </ul>
 </div>
 
@@ -143,8 +174,8 @@ I-Kang Ding's site            </a>
             var disqus_config = function () {
                 this.language = "en";
 
-                        this.page.identifier = '2020-03-22-my-work-from-home-environment-setup';
-                        this.page.url = 'https://ikding.github.io/my-work-from-home-environment-setup.html';
+                        this.page.identifier = '2020-03-29-my-work-from-home-setup';
+                        this.page.url = 'https://ikding.github.io/my-work-from-home-setup.html';
             };
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
