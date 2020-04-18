@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Do I look inexperienced? - I-Kang's Notes</title>
+    <title>Pelican Readtime Plugin - I-Kang's Notes</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,20 +9,20 @@
 
 
 
-<link rel="canonical" href="https://ikding.github.io/do-i-look-inexperienced.html">
+<link rel="canonical" href="https://ikding.github.io/pelican-readtime-plugin.html">
 
         <meta name="author" content="I-Kang Ding" />
-        <meta name="keywords" content="career" />
-        <meta name="description" content="I&#39;ve been working at the DC office of Capital One for a little bit over a month now. There&#39;s two short conversations that makes me wonder what sorts of &#34;vibes&#34; I gave to people. First week at the office, another product manager in his late 20&#39;s thought that I was …" />
+        <meta name="keywords" content="data_science" />
+        <meta name="description" content="How to add readtime plugin in pelican" />
 
         <meta property="og:site_name" content="I-Kang's Notes" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Do I look inexperienced?"/>
-        <meta property="og:url" content="https://ikding.github.io/do-i-look-inexperienced.html"/>
-        <meta property="og:description" content="I&#39;ve been working at the DC office of Capital One for a little bit over a month now. There&#39;s two short conversations that makes me wonder what sorts of &#34;vibes&#34; I gave to people. First week at the office, another product manager in his late 20&#39;s thought that I was …"/>
-        <meta property="article:published_time" content="2015-09-02" />
-            <meta property="article:section" content="career" />
-            <meta property="article:tag" content="career" />
+        <meta property="og:title" content="Pelican Readtime Plugin"/>
+        <meta property="og:url" content="https://ikding.github.io/pelican-readtime-plugin.html"/>
+        <meta property="og:description" content="How to add readtime plugin in pelican"/>
+        <meta property="article:published_time" content="2020-04-18" />
+            <meta property="article:section" content="data_science" />
+            <meta property="article:tag" content="data_science" />
             <meta property="article:author" content="I-Kang Ding" />
 
 
@@ -79,10 +79,10 @@ I-Kang's Notes            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="https://ikding.github.io/do-i-look-inexperienced.html"
+                    <a href="https://ikding.github.io/pelican-readtime-plugin.html"
                        rel="bookmark"
-                       title="Permalink to Do I look inexperienced?">
-                        Do I look inexperienced?
+                       title="Permalink to Pelican Readtime Plugin">
+                        Pelican Readtime Plugin
                     </a>
                 </h1>
             </header>
@@ -92,7 +92,7 @@ I-Kang's Notes            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2015-09-02T00:00:00-04:00"> 2015-09-02 (Wed)</time>
+        <i class="fa fa-calendar"></i><time datetime="2020-04-18T00:00:00-04:00"> 2020-04-18 (Sat)</time>
     </span>
         <span class="label label-default">Read time</span>
         <span class="published">
@@ -103,32 +103,35 @@ I-Kang's Notes            </a>
 
 
 <span class="label label-default">Tags</span>
-	<a href="https://ikding.github.io/tag/career.html">career</a>
+	<a href="https://ikding.github.io/tag/data_science.html">data_science</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>I've been working at the DC office of Capital One for a little bit over a month now. There's two short conversations that makes me wonder what sorts of &quot;vibes&quot; I gave to people.</p>
-<p>First week at the office, another product manager in his late 20's thought that I was a summer intern:</p>
-<div class="line-block">
-<div class="line">PM: &quot;So, you must be pretty excited to go back to school in a few weeks, huh?&quot;</div>
-<div class="line">Me: &quot;Huh? What do you mean?&quot;</div>
-<div class="line">PM: &quot;The internship program is coming to an end in a few weeks, right?&quot;</div>
-<div class="line">Me: &quot;Uh... right... about that... I am actually a full time employee on the data science team...&quot;</div>
-<div class="line">PM: &quot;....&quot;</div>
-</div>
-<p>Then, from a few days ago, I met another colleague who only graduated from her bachelors degree a few month ag, who thought that I am a fresh college grad like her:</p>
-<div class="line-block">
-<div class="line">Her: &quot;So how far do you commute?&quot;</div>
-<div class="line">Me: &quot;Oh, I ride all the way down to &lt;some&gt; metro station&quot;.</div>
-<div class="line">Her: &quot;Wow that's far! Is it because you are still living at home?&quot;</div>
-<div class="line">Me: &quot;Huh? Yeah, I do live at home. You don't?&quot;</div>
-<div class="line">Her: &quot;Oh, I meant if you are still living at your parents' house. Many of us who are fresh out of school still do that.&quot;</div>
-<div class="line">Me: &quot;No... I live with my wife and two kids!&quot;</div>
-<div class="line">Her: &quot;What? Wait, how old are you?&quot;</div>
-<div class="line">Me: &quot;.... Let's just say I got my PhD a few years ago, and this is my third job...&quot;</div>
-<div class="line">Her: &quot;...&quot;</div>
-</div>
-<p>Let's see how long m youthful (and experienced) vibe will last at the new job!</p>
+                <p>In the beginning of 2020, I started a goal of writing more professionally. I did not like the idea of putting my blog articles in pay-wall sites such as medium, so I decided to use my own static site generator and host my blog in GitHub pages.</p>
+<p>In picking a <a class="reference external" href="https://www.fullstackpython.com/static-site-generator.html">static site generator</a>, I have poked around at a few libraries out there, and landed on <a class="reference external" href="https://blog.getpelican.com">Pelican</a>. This, in retrospect, was an obvious choice because among the Python static generators (<a class="reference external" href="https://blog.getpelican.com">pelican</a>, <a class="reference external" href="https://github.com/lektor/lektor">lektor</a>, <a class="reference external" href="https://github.com/getnikola/nikola">nikola</a>), pelican has been around for a long time, and has an extensive <a class="reference external" href="https://github.com/getpelican/pelican-plugins">plugin</a> system.</p>
+<p>The plugin I want to talk in this post is the <a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/readtime">readtime</a> plugin. From the plugin's own site:</p>
+<blockquote>
+An article estimated read time plugin for Pelican static site generator. After Pelican generated the content of each page, the plugin read through the generated HTML content and strip all the tags, count all the word, then utilize average human read speed to calculate the read time of each article. The read time is passed over to the 'content' object of the article so Jinja template can use it to display the read time on wherever appropriate.</blockquote>
+<p>It's a short and sweet plugin, but it took some time to make it work with my site. So I figured that I'll writeup what worked for me, in case it helps others in the future.</p>
+<p>First, I have added plugin name to the <tt class="docutils literal">pelicanconf.py</tt> file:</p>
+<div class="highlight"><pre><span></span><span class="n">PLUGINS</span><span class="o">=</span><span class="p">[</span> <span class="o">...</span> <span class="p">,</span> <span class="s1">&#39;pelican-readtime&#39;</span><span class="p">]</span>
+</pre></div>
+<p>Then, you can put the following code in whichever template you want. I was using <a class="reference external" href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3">pelican-bootstrap3</a> template, so I put the following <a class="reference external" href="https://github.com/ikding/website/blob/ac1713ac475f3c927f54ac3da339ac1819623d22/pelican-themes/pelican-bootstrap3/templates/includes/article_info.html#L6-L10">code block</a> in my <tt class="docutils literal">article_info.html</tt>:</p>
+<div class="highlight"><pre><span></span>{% if article.readtime %}
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;label label-default&quot;</span><span class="p">&gt;</span>Read time<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;published&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fa fa-hourglass&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span> {{article.readtime.minutes}} min.<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+{% endif %}
+</pre></div>
+<p>I also added the following <a class="reference external" href="https://github.com/ikding/website/blob/ac1713ac475f3c927f54ac3da339ac1819623d22/pelican-themes/pelican-bootstrap3/templates/archives.html#L20-L22">code block</a> to <tt class="docutils literal">archives.html</tt>:</p>
+<div class="highlight"><pre><span></span>{% if article.readtime %}
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;categories-timestamp&quot;</span><span class="p">&gt;</span>({{article.readtime.minutes}} min read)<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+{% endif %}
+</pre></div>
+<p>And that's all there is to it! After you had the readtime properly configured, you will be able to see the read time of your articles in the article page:</p>
+<img alt="readtime-article-page" class="align-center" src="https://user-images.githubusercontent.com/7269845/79665216-60072000-8183-11ea-8d3f-c08577d095f9.png" style="width: 600px;" />
+<p>... as well as the archive page:</p>
+<img alt="readtime-article-page" class="align-center" src="https://user-images.githubusercontent.com/7269845/79665208-5f6e8980-8183-11ea-834b-bdc30dad4048.png" style="width: 800px;" />
 
             </div>
             <!-- /.entry-content -->
@@ -144,8 +147,8 @@ I-Kang's Notes            </a>
             var disqus_config = function () {
                 this.language = "en";
 
-                        this.page.identifier = '2015-09-02-do-i-look-inexperienced';
-                        this.page.url = 'https://ikding.github.io/do-i-look-inexperienced.html';
+                        this.page.identifier = '2020-04-18-pelican-readtime-plugin';
+                        this.page.url = 'https://ikding.github.io/pelican-readtime-plugin.html';
             };
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
