@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>PyVista tutorial: Red Spiders Cometh - I-Kang's Notes</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="https://ikding.github.io/pyvista-red-spiders-cometh.html">
+
+        <meta name="author" content="I-Kang Ding" />
+        <meta name="keywords" content="data_science,misc" />
+        <meta name="description" content="PyVista is a Python package for 3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit (VTK). I learned how to use the package in the past few weeks, and decided to build something fun to explore Python-based 3D visualization on the web. I had so much …" />
+
+        <meta property="og:site_name" content="I-Kang's Notes" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="PyVista tutorial: Red Spiders Cometh"/>
+        <meta property="og:url" content="https://ikding.github.io/pyvista-red-spiders-cometh.html"/>
+        <meta property="og:description" content="PyVista is a Python package for 3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit (VTK). I learned how to use the package in the past few weeks, and decided to build something fun to explore Python-based 3D visualization on the web. I had so much …"/>
+        <meta property="article:published_time" content="2020-04-19" />
+            <meta property="article:section" content="data_science" />
+            <meta property="article:tag" content="data_science" />
+            <meta property="article:tag" content="misc" />
+            <meta property="article:author" content="I-Kang Ding" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://ikding.github.io/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="https://ikding.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://ikding.github.io/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://ikding.github.io/theme/css/style.css" type="text/css"/>
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://ikding.github.io/" class="navbar-brand">
+I-Kang's Notes            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/resume/">Resume</a></li>
+                    <li><a href="/tag/career.html">Career Development</a></li>
+                    <li><a href="/tag/data_science.html">Data Science</a></li>
+                    <li><a href="/tag/climate_tech.html">Climate Tech</a></li>
+                    <li><a href="/tag/misc.html">Misc</a></li>
+                    <li><a href="/archives.html">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://ikding.github.io/pyvista-red-spiders-cometh.html"
+                       rel="bookmark"
+                       title="Permalink to PyVista tutorial: Red Spiders Cometh">
+                        PyVista tutorial: Red Spiders Cometh
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2020-04-19T00:00:00-04:00"> 2020-04-19 (Sun)</time>
+    </span>
+        <span class="label label-default">Read time</span>
+        <span class="published">
+            <i class="fa fa-hourglass"></i> 12 min</span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://ikding.github.io/tag/data_science.html">data_science</a>
+        /
+	<a href="https://ikding.github.io/tag/misc.html">misc</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <img alt="xkcd-oh-god-spiders" class="align-center" src="https://user-images.githubusercontent.com/7269845/79707786-9a5be480-828b-11ea-85ea-2e9b99982b5a.png" style="width: 150px;" />
+<p>PyVista is a Python package for 3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit (VTK). I learned how to use the package in the past few weeks, and decided to build something fun to explore Python-based 3D visualization on the web.</p>
+<p>I had so much fun learning how to use the package, I decided to write up the process as a tutorial. Hope you found it helpful!</p>
+<div class="section" id="what-should-i-build">
+<h2>What should I build?</h2>
+<p>As a engineering / programming nerd, I have always been a big fan of <a class="reference external" href="https://xkcd.com">XKCD comics</a>. (In fact, I've been known to possess an uncanny set of esoteric knowledge about XKCD comic references, and I often put a healthy dosage of xkcd comics in my <a class="reference external" href="https://ikding.github.io/building-python-community-among-analysts.html">conference talks</a>... but that's a topic for another post!) So, when I was thinking of 2D scenes that I want to render, I immediately think of XKCD's <a class="reference external" href="https://www.explainxkcd.com/wiki/index.php/Category:Red_Spiders">red spiders</a>.</p>
+<p>Red spiders appear in at least 7 different XKCD comics, although not many recently. After looking through the xkcd spider comic, I landed on the <a class="reference external" href="https://xkcd.com/126/">Red Spiders Cometh</a> scene. This post will walk through how we can turn this 2D scene:</p>
+<img alt="xkcd-red-spiders-cometh-2d" class="align-center" src="https://imgs.xkcd.com/comics/red_spiders_cometh.jpg" style="width: 500px;" />
+<p>To a 3D scene that you can view and zoom <a class="reference external" href="https://ikding.github.io/xkcd_red_spider_3d/">on the web</a>:</p>
+<a class="reference external image-reference" href="https://ikding.github.io/xkcd_red_spider_3d/"><img alt="red-spiders-cometh-gif-link" class="align-center" src="https://user-images.githubusercontent.com/7269845/79694828-e897c600-8240-11ea-8d09-9681be469f46.gif" style="width: 500px;" /></a>
+</div>
+<div class="section" id="installing-pyvista">
+<h2>Installing <tt class="docutils literal">PyVista</tt></h2>
+<p>PyVista has an excellent collection of documentation. Following through the <a class="reference external" href="https://docs.pyvista.org/getting-started/installation.html#">Installation instructions</a>, I was able to <tt class="docutils literal">pip install</tt> into my conda environment:</p>
+<div class="highlight"><pre><span></span>pip install pyvista
+</pre></div>
+</div>
+<div class="section" id="hello-spider-our-arachnid-solider">
+<h2>Hello spider (our arachnid solider)</h2>
+<p>In this tutorial, we'll stick with the stock spider model that is available in PyVista examples.</p>
+<p>(Side note: XKCD spider actually should only have six legs, but I am not good enough with editing 3D models to remove legs, so the stock spider will have to do for now.)</p>
+<p>We can easily make our spider come to life in 3D using just a few lines of code:</p>
+<div class="highlight"><pre><span></span><span class="c1"># hello_spider.py</span>
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">pv</span><span class="o">.</span><span class="n">set_plot_theme</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+    <span class="n">spider</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_spider</span><span class="p">()</span>
+
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">spider</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>  <span class="c1"># spider</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+<p>Say hi to our spider soldier:</p>
+<img alt="spider" class="align-center" src="https://user-images.githubusercontent.com/7269845/79674503-d753a880-81b1-11ea-8d78-30839de1775a.png" style="width: 500px;" />
+</div>
+<div class="section" id="hello-spider-on-a-box-our-assault-unit">
+<h2>Hello spider on a box (our assault unit)</h2>
+<p>In the xkcd comic, our spider foot solder doesn't just float around in free space. We need to give it a transport - a box! Fortunately, PyVista provides an easy way to plot a box, <em>right out-of-the-box</em>.</p>
+<p>Now let's put our spider on its own box. We had to do some scaling, rotation, and translation to make our soldier land on its own transport with all eight legs. Also, we took care to make sure that the center of our box is at the origin, which will make our task later of multiplying our assault unit easier.</p>
+<div class="highlight"><pre><span></span><span class="c1"># hello_spider_on_box.py</span>
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+
+
+<span class="k">def</span> <span class="nf">get_unit_cell_box</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return a box unit. The box has length 1 in all 3 dimensions, and is</span>
+<span class="sd">    centered at the origin.</span>
+
+<span class="sd">    Having the box centered at origin will make it easier for rotating the</span>
+<span class="sd">    spider on a box.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pv.PolyData: ``pv.Polydata`` containing the box unit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_box</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Box</span><span class="p">()</span>
+    <span class="n">default_box</span><span class="o">.</span><span class="n">points</span> <span class="o">/=</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">default_box</span>
+
+
+<span class="k">def</span> <span class="nf">get_unit_cell_spider</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return a spider unit. The spider has legspan that is slightly smaller</span>
+<span class="sd">    than the box face, and is in a position so it appears to be standing on the</span>
+<span class="sd">    box unit.</span>
+
+<span class="sd">    Having the spider unit standing on the box centered at origin will make it</span>
+<span class="sd">    easier for rotating the spider on a box.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pv.PolyData: ``pv.Polydata`` containing the spider unit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_spider</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_spider</span><span class="p">()</span>
+    <span class="n">default_spider</span><span class="o">.</span><span class="n">points</span> <span class="o">/=</span> <span class="mi">6</span>
+    <span class="n">default_spider</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+    <span class="n">default_spider</span><span class="o">.</span><span class="n">rotate_z</span><span class="p">(</span><span class="o">-</span><span class="mi">110</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">default_spider</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Main function for rendering the 3D scene for spider on a box.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pv.Plotter: pyvista plotter for plotting the 3D scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+    <span class="n">spider</span> <span class="o">=</span> <span class="n">get_unit_cell_spider</span><span class="p">()</span>
+    <span class="n">box</span> <span class="o">=</span> <span class="n">get_unit_cell_box</span><span class="p">()</span>
+
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">spider</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>  <span class="c1"># spider</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tan&quot;</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># box</span>
+
+    <span class="k">return</span> <span class="n">plotter</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">pv</span><span class="o">.</span><span class="n">set_plot_theme</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">main</span><span class="p">()</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+<p>And now we have a assault unit! <em>Our solider stares, with resolve, into the distance.</em></p>
+<img alt="spider-on-box" class="align-center" src="https://user-images.githubusercontent.com/7269845/79675534-67462200-81b3-11ea-86e9-fb9342005c5f.png" style="width: 500px;" />
+</div>
+<div class="section" id="hello-buildings">
+<h2>Hello buildings</h2>
+<p>If you look at the <a class="reference external" href="https://xkcd.com/126/">original comic</a>, you would notice that the spider army has a target of their invasion - namely, the numerous buildings at a distance. Unfortunately there were no &quot;stock buildings&quot; that I can find in PyVista examples, but PyVista does have the ability to read a variety of 3D file types, so I did a google search and found this <a class="reference external" href="https://sketchfab.com/3d-models/buildings-and-skyscrapers-b35a7a00d6414f93a3d380965dfd169b">Buildings and Skyscrapers</a> 3D model (<tt class="docutils literal">.obj</tt> file), created by <a class="reference external" href="https://sketchfab.com/Angel.V.Mendez">Angel V Mendez</a> on Sketchfab, and made available through creative commons licensing. I downloaded the <tt class="docutils literal">.obj</tt> file and save them to disk, and I can simply use <tt class="docutils literal">pyvista.read()</tt> function to read them.</p>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Get a simple building.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="n">os</span><span class="o">.</span><span class="n">pardir</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_buildings</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return a set of buildings, which was downloaded from sketchfab and saved</span>
+<span class="sd">    in project file.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pv.PolyData: ``pv.Polydata`` containing the buildings.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_buildings</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="n">DATA_DIR</span><span class="p">,</span> <span class="s2">&quot;buildings-and-skyscrapers&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;buildings.obj&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">default_buildings</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">default_buildings</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">default_buildings</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">color_buildings</span><span class="o">=</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Main function for rendering the 3D scene.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        color_buildings (str, optional): color of the buildings. Defaults to</span>
+<span class="sd">        &quot;lightgray&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pv.Plotter: pyvista plotter for plotting the 3D scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+    <span class="n">buildings</span> <span class="o">=</span> <span class="n">get_buildings</span><span class="p">()</span>
+    <span class="n">buildings</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="mi">1</span>
+    <span class="n">buildings</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">])</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">buildings</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_buildings</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">plotter</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">pv</span><span class="o">.</span><span class="n">set_plot_theme</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">main</span><span class="p">()</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+<p>Our unsuspecting victim.</p>
+<img alt="buildings" class="align-center" src="https://user-images.githubusercontent.com/7269845/79676756-41228100-81b7-11ea-9e84-05f09750753f.png" style="width: 500px;" />
+</div>
+<div class="section" id="the-spiders-they-are-multiplying">
+<h2>The spiders, they are multiplying</h2>
+<p>You cannot hope to conquer a small-sized city with a single giant spider alone. We'll need a lot more. Fortunately, we can easily multiply our spider-on-a-box assault unit through code. We can also rotate and translate the assault units to make each spider solider occupy different faces of the box. We can even scale the size of our assault unit through a simple multiplication / division!</p>
+<p>This is where placing our unit spider-box assault unit in the origin (coordinate <tt class="docutils literal">(0, 0, 0)</tt>) is helpful. The <a class="reference external" href="https://docs.pyvista.org/core/common.html#pyvista.Common.rotate_x">rotate_x</a>, <a class="reference external" href="https://docs.pyvista.org/core/common.html#pyvista.Common.rotate_y">rotate_y</a>, and <a class="reference external" href="https://docs.pyvista.org/core/common.html#pyvista.Common.rotate_z">rotate_z</a> methods in <tt class="docutils literal">pv.PolyData</tt> will rotate the meshes with respect to x, y, or z axis (right-handed coordinate). Placing our assault unit at the origin will allow us to rotate our assault unit as many times we want, and the spider will be able to cling snugly with the box. After we are happy with the rotational placement, we can call <a class="reference external" href="https://docs.pyvista.org/core/common.html#pyvista.Common.translate">translate</a> method to spread out our assault units to other locations.</p>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Main script to kick off a pyvista 3D visualization window.</span>
+
+<span class="sd">To run::</span>
+<span class="sd">    python xkcd_red_spider/hello_spider_army.py</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="kn">from</span> <span class="nn">pyvista</span> <span class="kn">import</span> <span class="n">examples</span>
+
+
+<span class="k">def</span> <span class="nf">get_unit_cell_box</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return a box unit. The box has length 1 in all 3 dimensions, and is</span>
+<span class="sd">    centered at the origin.</span>
+
+<span class="sd">    Having the box centered at origin will make it easier for rotating the</span>
+<span class="sd">    spider on a box.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pv.PolyData: ``pv.Polydata`` containing the box unit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_box</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Box</span><span class="p">()</span>
+    <span class="n">default_box</span><span class="o">.</span><span class="n">points</span> <span class="o">/=</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">default_box</span>
+
+
+<span class="k">def</span> <span class="nf">get_unit_cell_spider</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return a spider unit. The spider has legspan that is slightly smaller</span>
+<span class="sd">    than the box face, and is in a position so it appears to be standing on the</span>
+<span class="sd">    box unit.</span>
+
+<span class="sd">    Having the spider unit standing on the box centered at origin will make it</span>
+<span class="sd">    easier for rotating the spider on a box.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pv.PolyData: ``pv.Polydata`` containing the spider unit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_spider</span> <span class="o">=</span> <span class="n">examples</span><span class="o">.</span><span class="n">download_spider</span><span class="p">()</span>
+    <span class="n">default_spider</span><span class="o">.</span><span class="n">points</span> <span class="o">/=</span> <span class="mi">6</span>
+    <span class="n">default_spider</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+    <span class="n">default_spider</span><span class="o">.</span><span class="n">rotate_z</span><span class="p">(</span><span class="o">-</span><span class="mi">110</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">default_spider</span>
+
+
+<span class="k">def</span> <span class="nf">process_spider_box_unit_cell</span><span class="p">(</span>
+    <span class="n">spider</span><span class="p">:</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span> <span class="o">=</span> <span class="n">get_unit_cell_spider</span><span class="p">(),</span>
+    <span class="n">box</span><span class="p">:</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span> <span class="o">=</span> <span class="n">get_unit_cell_box</span><span class="p">(),</span>
+    <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">rotation</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">translation</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">,</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Process the spider-box unit cell through operations including scaling,</span>
+<span class="sd">    rotations, and translations.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        spider (pv.PolyData, optional): Polydata containing the spider unit.</span>
+<span class="sd">            Defaults to get_unit_cell_spider().</span>
+<span class="sd">        box (pv.PolyData, optional): Polydata containing the box unit. Defaults</span>
+<span class="sd">            to get_unit_cell_box().</span>
+<span class="sd">        scale (float, optional): scaling factor. Defaults to 1.0.</span>
+<span class="sd">        rotation (List[Tuple[str, float]], optional): list of steps for</span>
+<span class="sd">            rotation, in the form of list of tuples, and the tuple containing</span>
+<span class="sd">            the direction (``&quot;x&quot;``, ``&quot;y&quot;``, or ``&quot;z&quot;``) in the first element,</span>
+<span class="sd">            and the degrees in the second direction. Example:</span>
+<span class="sd">            ``[(&quot;x&quot;, 90), (&quot;z&quot;, 180)]``. Under the hood, the</span>
+<span class="sd">            `rotate_x &lt;https://docs.pyvista.org/core/common.html#pyvista.Common.rotate_x&gt;`_,</span>
+<span class="sd">            `rotate_y &lt;https://docs.pyvista.org/core/common.html#pyvista.Common.rotate_y&gt;`_, and</span>
+<span class="sd">            `rotate_z &lt;https://docs.pyvista.org/core/common.html#pyvista.Common.rotate_z&gt;`_</span>
+<span class="sd">            methods in ``pv.PolyData`` are called. Defaults to None.</span>
+<span class="sd">        translation (List[Union[int, float]], optional): Length of 3 list or</span>
+<span class="sd">            array to translate the polydata. Under the hood, the</span>
+<span class="sd">            `translate &lt;https://docs.pyvista.org/core/common.html#pyvista.Common.translate&gt;`_</span>
+<span class="sd">            method in ``pv.PolyData`` is called. Defaults to None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[pv.PolyData, pv.PolyData]: A tuple of ``pv.Polydata`` containing the spider and box.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spider</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="n">scale</span>
+    <span class="n">box</span><span class="o">.</span><span class="n">points</span> <span class="o">*=</span> <span class="n">scale</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rotation</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">rotation</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">step</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span>
+                <span class="n">spider</span><span class="o">.</span><span class="n">rotate_x</span><span class="p">(</span><span class="n">step</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">step</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+                <span class="n">spider</span><span class="o">.</span><span class="n">rotate_y</span><span class="p">(</span><span class="n">step</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">step</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span>
+                <span class="n">spider</span><span class="o">.</span><span class="n">rotate_z</span><span class="p">(</span><span class="n">step</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">translation</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">spider</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span>
+        <span class="n">box</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">spider</span><span class="p">,</span> <span class="n">box</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Main function for rendering the 3D scene for spider on a box.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pv.Plotter: pyvista plotter for plotting the 3D scene.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+    <span class="n">spider_1</span><span class="p">,</span> <span class="n">box_1</span> <span class="o">=</span> <span class="n">process_spider_box_unit_cell</span><span class="p">(</span>
+        <span class="n">spider</span><span class="o">=</span><span class="n">get_unit_cell_spider</span><span class="p">(),</span> <span class="n">box</span><span class="o">=</span><span class="n">get_unit_cell_box</span><span class="p">(),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span>
+    <span class="p">)</span>
+    <span class="n">spider_2</span><span class="p">,</span> <span class="n">box_2</span> <span class="o">=</span> <span class="n">process_spider_box_unit_cell</span><span class="p">(</span>
+        <span class="n">spider</span><span class="o">=</span><span class="n">get_unit_cell_spider</span><span class="p">(),</span>
+        <span class="n">box</span><span class="o">=</span><span class="n">get_unit_cell_box</span><span class="p">(),</span>
+        <span class="n">scale</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
+        <span class="n">rotation</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)],</span>
+        <span class="n">translation</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">spider_3</span><span class="p">,</span> <span class="n">box_3</span> <span class="o">=</span> <span class="n">process_spider_box_unit_cell</span><span class="p">(</span>
+        <span class="n">spider</span><span class="o">=</span><span class="n">get_unit_cell_spider</span><span class="p">(),</span>
+        <span class="n">box</span><span class="o">=</span><span class="n">get_unit_cell_box</span><span class="p">(),</span>
+        <span class="n">scale</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span>
+        <span class="n">rotation</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)],</span>
+        <span class="n">translation</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">spider_4</span><span class="p">,</span> <span class="n">box_4</span> <span class="o">=</span> <span class="n">process_spider_box_unit_cell</span><span class="p">(</span>
+        <span class="n">spider</span><span class="o">=</span><span class="n">get_unit_cell_spider</span><span class="p">(),</span>
+        <span class="n">box</span><span class="o">=</span><span class="n">get_unit_cell_box</span><span class="p">(),</span>
+        <span class="n">scale</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span>
+        <span class="n">rotation</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)],</span>
+        <span class="n">translation</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">spider_1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">spider_2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">spider_3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">spider_4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">box_1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tan&quot;</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">box_2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tan&quot;</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">box_3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tan&quot;</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">box_4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tan&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">plotter</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">pv</span><span class="o">.</span><span class="n">set_plot_theme</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">main</span><span class="p">()</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+<p>Here is our mathematically-generated, 4-unit spider assault squad.</p>
+<img alt="spider-assult-squad" class="align-center" src="https://user-images.githubusercontent.com/7269845/79691762-50451580-822f-11ea-9c40-0c6555549e92.png" style="width: 500px;" />
+</div>
+<div class="section" id="commencing-assault">
+<h2>Commencing assault</h2>
+<p>Now we have everything we need to put together our 3D scene for &quot;Red spiders cometh&quot;. What I did then was to manually label the coordinates of the assault unit in the original 2D scene, and translate them into coordinates that my Python program can understand. I also reproduced the rotational steps to make them into the right orientation.</p>
+<img alt="red-spiders-cometh-coord-label" class="align-center" src="https://user-images.githubusercontent.com/7269845/79692776-fc3d2f80-8234-11ea-8be1-4f227eef0b0a.jpeg" style="width: 600px;" />
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="c1"># Hand-crafted spider army coords that mimic the xkcd comic: Red Spiders Cometh</span>
+<span class="c1"># https://xkcd.com/126/</span>
+<span class="n">XKCD_SPIDER_ARMY_COORD</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="mi">180</span><span class="p">)],</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="mi">180</span><span class="p">)],</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="mi">180</span><span class="p">)],</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="mi">180</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">)],</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)],</span>
+    <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">)],</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">)],</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)],</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="mi">180</span><span class="p">)],</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">)],</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span> <span class="p">[(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)],</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">):</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">get_xkcd_spider_army</span><span class="p">(</span>
+    <span class="n">spider_army_coord</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">extra_spider</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">,</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Generate the xkcd spider army through the army coordinates.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        spider_army_coord (Dict[Tuple[int, int], List[Tuple[str, int]]], optional): Coordinates</span>
+<span class="sd">            and rotation steps of the red spider army. Check XKCD_SPIDER_ARMY_COORD for the</span>
+<span class="sd">            example setting. Defaults to None.</span>
+<span class="sd">        extra_spider (bool, optional): whether or not to add extra spiders on two boxes, to</span>
+<span class="sd">            improve fidelity with the original comic. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[Tuple[pv.PolyData, pv.PolyData]]: list of (spider, box) ``pv.PolyData`` tuples.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">spider_army_coord</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">spider_army_coord</span> <span class="o">=</span> <span class="n">XKCD_SPIDER_ARMY_COORD</span>
+
+    <span class="n">spider_army</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">spider_unit_coord</span><span class="p">,</span> <span class="n">spider_unit_rotation</span> <span class="ow">in</span> <span class="n">spider_army_coord</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">spider_army</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">process_spider_box_unit_cell</span><span class="p">(</span>
+                <span class="n">spider</span><span class="o">=</span><span class="n">get_unit_cell_spider</span><span class="p">(),</span>
+                <span class="n">box</span><span class="o">=</span><span class="n">get_unit_cell_box</span><span class="p">(),</span>
+                <span class="n">rotation</span><span class="o">=</span><span class="n">spider_unit_rotation</span><span class="p">,</span>
+                <span class="n">translation</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">spider_unit_coord</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Add two extra spiders for fidelity with xkcd comic</span>
+    <span class="k">if</span> <span class="n">extra_spider</span> <span class="ow">and</span> <span class="p">(</span><span class="n">spider_army_coord</span> <span class="o">==</span> <span class="n">XKCD_SPIDER_ARMY_COORD</span><span class="p">):</span>
+        <span class="n">spider_army</span> <span class="o">+=</span> <span class="p">[</span>
+            <span class="n">process_spider_box_unit_cell</span><span class="p">(</span>
+                <span class="n">spider</span><span class="o">=</span><span class="n">get_unit_cell_spider</span><span class="p">(),</span>
+                <span class="n">box</span><span class="o">=</span><span class="n">get_unit_cell_box</span><span class="p">(),</span>
+                <span class="n">rotation</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)],</span>
+                <span class="n">translation</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">),</span>
+            <span class="n">process_spider_box_unit_cell</span><span class="p">(</span>
+                <span class="n">spider</span><span class="o">=</span><span class="n">get_unit_cell_spider</span><span class="p">(),</span>
+                <span class="n">box</span><span class="o">=</span><span class="n">get_unit_cell_box</span><span class="p">(),</span>
+                <span class="n">rotation</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="mi">180</span><span class="p">)],</span>
+                <span class="n">translation</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="p">),</span>
+        <span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">spider_army</span>
+</pre></div>
+<p>And now, you can see the re-created scene of &quot;Red Spiders Cometh&quot; in 3D!</p>
+<img alt="red-spiders-cometh-static" class="align-center" src="https://user-images.githubusercontent.com/7269845/79693265-a0c07100-8237-11ea-92e8-eeecc00e7bcc.png" style="width: 500px;" />
+</div>
+<div class="section" id="commemorate-our-conquest-on-the-web">
+<h2>Commemorate our conquest on the web</h2>
+<p>So far, we've been rendering the 3D scene with PyVista on the local machine. One cool thing about PyVista is: you can easily export your scene, and use <a class="reference external" href="https://kitware.github.io/vtk-js/index.html">vtkjs</a> to allow our scene of conquest to be rendered in a website.</p>
+<p>All it takes is one line of <a class="reference external" href="https://docs.pyvista.org/plotting/plotting.html#pyvista.BasePlotter.export_vtkjs">export_vtkjs</a> code to export our scene to <tt class="docutils literal">.vtkjs</tt>:</p>
+<div class="highlight"><pre><span></span><span class="n">vtkjs_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="s2">&quot;red_spiders_cometh&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">export_vtkjs</span><span class="p">(</span><span class="n">vtkjs_file_path</span><span class="p">)</span>
+</pre></div>
+<p>Then, we'll be able to render the scene from within a browser! (I borrowed the code from another repo, <a class="reference external" href="https://github.com/dennissergeev/exoconvection-apj-2020">dennissergeev/exoconvection-apj-2020</a>)</p>
+<p>So now, here I present to you, <a class="reference external" href="https://ikding.github.io/xkcd_red_spider_3d/">Red Spiders Cometh</a>, now in 3D! (Clicking the gif will bring you to the website that you can play with yourself.</p>
+<a class="reference external image-reference" href="https://ikding.github.io/xkcd_red_spider_3d/"><img alt="red-spiders-cometh-gif-link" class="align-center" src="https://user-images.githubusercontent.com/7269845/79694828-e897c600-8240-11ea-8d09-9681be469f46.gif" style="width: 500px;" /></a>
+</div>
+<div class="section" id="last-words">
+<h2>Last words</h2>
+<p>I have really enjoy my experience using PyVista so far. The library has a really extensive documentation and use cases, and I have had numerous cases where I was fiddling with things to see if they work in PyVista, and it turned out to work in my first try, which is always a pleasant surprise when you are playing with a new tool.</p>
+<p>All the code examples (along with a more modularized code base) can be found in this repo: <a class="reference external" href="https://github.com/ikding/xkcd_red_spider_3d">ikding/xkcd_red_spider_3d</a>. Enjoy!</p>
+<p>P.S. in case anyone is interested, here are all six XKCD comics in which the red spider was referenced:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://xkcd.com/8/">8: Red Spiders</a></li>
+<li><a class="reference external" href="https://xkcd.com/43/">43: Red Spiders 2</a></li>
+<li><a class="reference external" href="https://xkcd.com/47/">47: Counter-Red Spiders</a></li>
+<li><a class="reference external" href="https://xkcd.com/126/">126: Red Spiders Cometh</a></li>
+<li><a class="reference external" href="https://xkcd.com/427/">427: Bad Timing</a></li>
+<li><a class="reference external" href="https://xkcd.com/442/">442: xkcd Loves the Discovery Channel</a></li>
+</ul>
+</div>
+
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'ikding'; // required: replace example with your forum shortname
+
+            var disqus_config = function () {
+                this.language = "en";
+
+                        this.page.identifier = '2020-04-19-pyvista-red-spiders-cometh';
+                        this.page.url = 'https://ikding.github.io/pyvista-red-spiders-cometh.html';
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="https://ikding.github.io//images/profile.jpg"/>
+        </p>
+    <p>
+      <strong>About I-Kang Ding</strong><br/>
+        
+Doing data mining on mining data at KoBold Metals.
+Stanford Engineering Ph.D.
+<br/>
+<br/>
+Interested in machine learning, Python, and climate change.
+
+    </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://github.com/ikding"><i class="fa fa-github-square fa-lg"></i> GitHub</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/ikding"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/ikding"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Github -->
+<li class="list-group-item">
+  <h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+  <div id="gh_repos">
+    <p class="list-group-item">Status updating...</p>
+  </div>
+  <a href="https://github.com/ikding">@ikding</a> on GitHub
+</li>
+<!-- End Sidebar/Github -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2020 I-Kang Ding
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://ikding.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://ikding.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://ikding.github.io/theme/js/respond.min.js"></script>
+
+
+
+<!-- GitHub JS Code -->
+<script type="text/javascript">
+$(document).ready(function () {
+  if (!window.jXHR) {
+    var jxhr = document.createElement('script');
+    jxhr.type = 'text/javascript';
+    jxhr.src = 'https://ikding.github.io/theme/js/jXHR.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(jxhr, s);
+  }
+
+  github.showRepos({
+    user: 'ikding',
+    count: 3,
+    skip_forks: true,
+    target: '#gh_repos'
+  });
+});
+</script>
+<script src="https://ikding.github.io/theme/js/github.js" type="text/javascript"></script>
+<!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ikding'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-19568221-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
