@@ -13,13 +13,13 @@
 
         <meta name="author" content="I-Kang Ding" />
         <meta name="keywords" content="climate_tech,data_science" />
-        <meta name="description" content="I attended day 1 of ICLR Workshop - Tackling Climate Change with Machine Learning remotely on 2020-04-26. Below are the notes I took from the talks that I attended. Day 1 of the conference had a jam-packed schedule, but because of the time zone difference, I was only able to attend …" />
+        <meta name="description" content="Notes from day 1 (Main workshop) of ICLR Workshop - Tackling Climate Change with Machine Learning on 2020-04-26." />
 
         <meta property="og:site_name" content="I-Kang's Notes" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Tackling climate change with ML (ICLR Workshop 2020) - day 1"/>
         <meta property="og:url" content="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-1.html"/>
-        <meta property="og:description" content="I attended day 1 of ICLR Workshop - Tackling Climate Change with Machine Learning remotely on 2020-04-26. Below are the notes I took from the talks that I attended. Day 1 of the conference had a jam-packed schedule, but because of the time zone difference, I was only able to attend …"/>
+        <meta property="og:description" content="Notes from day 1 (Main workshop) of ICLR Workshop - Tackling Climate Change with Machine Learning on 2020-04-26."/>
         <meta property="article:published_time" content="2020-04-26" />
             <meta property="article:section" content="climate_tech" />
             <meta property="article:tag" content="climate_tech" />
@@ -111,7 +111,14 @@ I-Kang's Notes            </a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <img alt="iclr-conference-logo" class="align-center" src="https://iclr.cc/static/admin/img/ICLR-logo.png" />
-<p>I attended day 1 of ICLR Workshop - <a class="reference external" href="https://www.climatechange.ai/ICLR2020_workshop#schedule">Tackling Climate Change with Machine Learning</a> remotely on 2020-04-26. Below are the notes I took from the talks that I attended. Day 1 of the conference had a jam-packed schedule, but because of the time zone difference, I was only able to attend a small subset of the talk.</p>
+<p>I attended day 1 (Main workshop) of ICLR Workshop - <a class="reference external" href="https://www.climatechange.ai/ICLR2020_workshop#schedule">Tackling Climate Change with Machine Learning</a> remotely on 2020-04-26. Below are the notes I took from the talks that I attended. Day 1 of the conference had a jam-packed schedule, but because of the time zone difference, I was only able to attend a small subset of the talk.</p>
+<p>The virtual conference spans five days. If you're interested, here are the notes I took for other days.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-2.html">Day 2 (Energy Day)</a></li>
+<li><a class="reference external" href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-3.html">Day 3 (Agriculture, Forestry, and Other Land Use (AFOLU) Day)</a></li>
+<li><a class="reference external" href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-4.html">Day 4 (Climate Science and Adaptation Day)</a></li>
+<li><a class="reference external" href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-5.html">Day 5 (Cross-cutting Methods Day)</a></li>
+</ul>
 <div class="section" id="panel-intersection-of-climate-change-and-machine-learning">
 <h2>Panel: intersection of climate change and machine learning</h2>
 <p>Dan Kammen, Dan Morris, Jessica Thorn, John Platt, Nana Ama Browne Klutse, Stefano Ermon</p>
@@ -135,8 +142,8 @@ I-Kang's Notes            </a>
 <p><strong>Question</strong>: Challenges of ML models in Machine Learning world</p>
 <p><strong>Answers</strong>:</p>
 <ul class="simple">
-<li>ML models often have had a hard time being “believed” by domain experts, unless there’s way to use models on synthetic data and show that the models matches with what the experts agree on physics-based principles.</li>
-<li>There’s no way for non-technical experts (e.g. policy makers) to really become “co-equals” with ML researchers, unless the non technical stakeholders have way to “play / tweak” models themselves without writing code. This may involve more efforts on building simplified version of your model, and allow non technical people to use it with a UI to play with different scenarios. This takes more time (and different sets of expertise) than what ML researchers are used to.</li>
+<li>ML models often have had a hard time being &quot;believed&quot; by domain experts, unless there's way to use models on synthetic data and show that the models matches with what the experts agree on physics-based principles.</li>
+<li>There's no way for non-technical experts (e.g. policy makers) to really become &quot;co-equals&quot; with ML researchers, unless the non technical stakeholders have way to &quot;play / tweak&quot; models themselves without writing code. This may involve more efforts on building simplified version of your model, and allow non technical people to use it with a UI to play with different scenarios. This takes more time (and different sets of expertise) than what ML researchers are used to.</li>
 </ul>
 <p><strong>Question</strong>: Applications that can help with negative emissions</p>
 <p><strong>Answers</strong>:</p>
@@ -151,19 +158,19 @@ I-Kang's Notes            </a>
 <li>Data issue:<ul>
 <li>Developing countries are likely to be negatively impacted by climate change</li>
 <li>But data on the ground is sparse at developing countries</li>
-<li>If you can’t see it, you can’t solve it</li>
+<li>If you can't see it, you can't solve it</li>
 <li>Solution: remote sensing. Landsat -&gt; satellite now, the spatial resolution has been greatly improved! From 30m to 3-5m resolution.</li>
 </ul>
 </li>
-<li>Ermon’s group is working on using satellite images to estimate poverty measures<ul>
-<li>Off the shelf technique often don’t work because there are very small amount of labelled data</li>
+<li>Ermon's group is working on using satellite images to estimate poverty measures<ul>
+<li>Off the shelf technique often don't work because there are very small amount of labelled data</li>
 <li>Technical challenges: lots of images, very few labels</li>
 <li>Need to use methods like semi-supervised learning, transfer learning, etc</li>
 </ul>
 </li>
 <li>Tile2Vec:<ul>
-<li>Good example of transfer learning: Word2Vec, continuous word vector representations. Assumes “words that appear in similar contexts have similar meanings”</li>
-<li>Tile2Vec: extension of that concept to geospatial data. Extends distribution hypothesis to geospatial data. “Everything is related to everything else, but near things are more related than distant things” (Similar location &lt;-&gt; similar meaning)</li>
+<li>Good example of transfer learning: Word2Vec, continuous word vector representations. Assumes &quot;words that appear in similar contexts have similar meanings&quot;</li>
+<li>Tile2Vec: extension of that concept to geospatial data. Extends distribution hypothesis to geospatial data. &quot;Everything is related to everything else, but near things are more related than distant things&quot; (Similar location &lt;-&gt; similar meaning)</li>
 <li>Train triplet loss on tiles close to vs away from each other</li>
 <li>Example task: classify crop types. RGBN images -&gt; predict 57 crop types</li>
 <li>Tile2Vec can outperform state-of-art CV algorithms such as ResNet, DenseNet, inception models in the sparsely labelled data regime.</li>
@@ -179,12 +186,12 @@ I-Kang's Notes            </a>
 </div>
 <div class="section" id="climate-biodiversity-and-land-using-ml-to-protect-and-restore-ecosystems-dan-morris">
 <h2>Climate, biodiversity, and land: using ML to protect and restore ecosystems - Dan Morris</h2>
-<p>Abstract: When we think “ML for climate change”, we often think of climate forecasting, energy grid optimization, greenhouse gas reduction, and other opportunities for ML to impact the direct causes and effects of global warming. But in this talk, I will present the close relationships among climate, biodiversity, and land use, and I will discuss opportunities for ML to support climate change mitigation by accelerating efforts in all three of these areas. Furthermore, this workshop’s mission states that “many in the ML community wish to take action on climate change, yet feel their skills are inapplicable”; I hope to convince the audience that one of the best ways we can put ML to work – and often the easiest way for ML students and practitioners to get hands-on experience with environmental sustainability – is to focus on some of the “small” problems whose solutions will make the day-to-day work of conservation scientists and practitioners more efficient.</p>
+<p>Abstract: When we think &quot;ML for climate change&quot;, we often think of climate forecasting, energy grid optimization, greenhouse gas reduction, and other opportunities for ML to impact the direct causes and effects of global warming. But in this talk, I will present the close relationships among climate, biodiversity, and land use, and I will discuss opportunities for ML to support climate change mitigation by accelerating efforts in all three of these areas. Furthermore, this workshop's mission states that &quot;many in the ML community wish to take action on climate change, yet feel their skills are inapplicable&quot;; I hope to convince the audience that one of the best ways we can put ML to work – and often the easiest way for ML students and practitioners to get hands-on experience with environmental sustainability – is to focus on some of the &quot;small&quot; problems whose solutions will make the day-to-day work of conservation scientists and practitioners more efficient.</p>
 <p>Key takeaways:</p>
 <ul class="simple">
 <li>Climate, biodiversity, and land use are intertwined</li>
 <li>ML can help in all three areas: go play with the data!</li>
-<li>Don’t sleep on the small problems that make the experts more efficient</li>
+<li>Don't sleep on the small problems that make the experts more efficient</li>
 <li>AL for Earth is a thing and we want to help you</li>
 </ul>
 <p><a class="reference external" href="https://www.microsoft.com/en-us/ai/ai-for-earth">AI for Earth</a>:</p>
@@ -218,7 +225,7 @@ I-Kang's Notes            </a>
 <li>Monitoring biodiversity:<ul>
 <li>lots of raw data about wildlife, especially remote sensing data &amp; tedious labeling process</li>
 <li><a class="reference external" href="https://www.wildme.org">Wild Me</a>: ML to scale scientific effort</li>
-<li><a class="reference external" href="https://www.inaturalist.org">iNaturalist</a>: ML to up-level everyone’s expertise - scaling expertise</li>
+<li><a class="reference external" href="https://www.inaturalist.org">iNaturalist</a>: ML to up-level everyone's expertise - scaling expertise</li>
 <li>Finding penguins from space: ML to do surveys at unprecedented scale</li>
 </ul>
 </li>
@@ -318,7 +325,7 @@ Doing data mining on mining data at KoBold Metals.
 Stanford Engineering Ph.D.
 <br/>
 <br/>
-Interested in machine learning, Python, and climate change.
+Interested in intersection of machine learning, data science, and climate change.
 
     </p>
 </div><!-- Sidebar -->
