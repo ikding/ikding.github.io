@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Pelican Embed-Tweet Plugin - I-Kang's Notes</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="https://ikding.github.io/pelican-embed-tweet-plugin.html">
+
+        <meta name="author" content="I-Kang Ding" />
+        <meta name="keywords" content="data_science" />
+        <meta name="description" content="In this article, I wrote about how to use pelican embed_tweet plugin in Pelican static site generator, which is useful for embedding tweet into your own blog posts, like so: In the beginning of 2020, I started a goal of writing more professionally. I did not like the idea of …" />
+
+        <meta property="og:site_name" content="I-Kang's Notes" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Pelican Embed-Tweet Plugin"/>
+        <meta property="og:url" content="https://ikding.github.io/pelican-embed-tweet-plugin.html"/>
+        <meta property="og:description" content="In this article, I wrote about how to use pelican embed_tweet plugin in Pelican static site generator, which is useful for embedding tweet into your own blog posts, like so: In the beginning of 2020, I started a goal of writing more professionally. I did not like the idea of …"/>
+        <meta property="article:published_time" content="2020-09-15" />
+            <meta property="article:section" content="data_science" />
+            <meta property="article:tag" content="data_science" />
+            <meta property="article:author" content="I-Kang Ding" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://ikding.github.io/theme/css/bootstrap.yeti.min.css" type="text/css"/>
+    <link href="https://ikding.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://ikding.github.io/theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://ikding.github.io/theme/css/style.css" type="text/css"/>
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="https://ikding.github.io/" class="navbar-brand">
+I-Kang's Notes            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                    <li><a href="/pages/about-me.html">About Me</a></li>
+                    <li><a href="/resume/">Resume</a></li>
+                    <li><a href="/tag/career.html">Career Development</a></li>
+                    <li><a href="/tag/data_science.html">Data Science</a></li>
+                    <li><a href="/tag/climate_tech.html">Climate Tech</a></li>
+                    <li><a href="/tag/misc.html">Misc</a></li>
+                    <li><a href="/archives.html">Archives</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="https://ikding.github.io/pelican-embed-tweet-plugin.html"
+                       rel="bookmark"
+                       title="Permalink to Pelican Embed-Tweet Plugin">
+                        Pelican Embed-Tweet Plugin
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2020-09-15T00:00:00-07:00"> 2020-09-15 (Tue)</time>
+    </span>
+        <span class="label label-default">Read time</span>
+        <span class="published">
+            <i class="fa fa-hourglass"></i> 2 min</span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="https://ikding.github.io/tag/data_science.html">data_science</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>In this article, I wrote about how to use pelican <tt class="docutils literal">embed_tweet</tt> plugin in Pelican static site generator, which is useful for embedding tweet into your own blog posts, like so:</p>
+<p>In the beginning of 2020, I started a goal of writing more professionally. I did not like the idea of putting my blog articles in pay-wall sites such as medium, so I decided to use my own static site generator and host my blog in GitHub pages.</p>
+<p>The <a class="reference external" href="https://www.fullstackpython.com/static-site-generator.html">static site generator</a>, I picked is <a class="reference external" href="https://blog.getpelican.com">Pelican</a>. The pelican plugin I want to talk in this post is the <a class="reference external" href="https://github.com/lqez/pelican-embed-tweet">embed-tweet</a> plugin, which is useful for embedding tweet into your own blog posts. (If you're interested in how I landed on Pelican, I talked about that briefly over in <a class="reference external" href="https://ikding.github.io/pelican-readtime-plugin.html">Pelican Readtime Plugin</a> article.)</p>
+<p>It's a short and sweet plugin, but it took some time to make it work with my site. So I figured that I'll writeup what worked for me, in case it helps others in the future.</p>
+<p>This particular plugin is not on PyPI, so what I did to get it to work on my system was to first copy the file content of <a class="reference external" href="https://github.com/lqez/pelican-embed-tweet/blob/master/embed_tweet.py">embed_tweet.py</a> into my own file system in the <tt class="docutils literal"><span class="pre">pelican-plugins</span></tt> subfolder. I also made a subfolder and <tt class="docutils literal">__init__.py</tt> file, like so:</p>
+<div class="highlight"><pre><span></span>$ tree pelican-plugins
+
+pelican-plugins
+└── embed_tweet
+    ├── __init__.py
+    └── embed_tweet.py
+</pre></div>
+<p>Then, I added plugin name to the <tt class="docutils literal">pelicanconf.py</tt> file:</p>
+<div class="highlight"><pre><span></span><span class="n">PLUGINS</span><span class="o">=</span><span class="p">[</span> <span class="o">...</span> <span class="p">,</span> <span class="s2">&quot;embed_tweet&quot;</span><span class="p">]</span>
+</pre></div>
+<p>Then, in the main body of my article, I can just highlight the tweet using the <tt class="docutils literal">t#</tt> prefix. (Please remove one of the extra <tt class="docutils literal">#</tt> from the line below.)</p>
+<div class="highlight"><pre><span></span>This article is from t##ikding
+
+And here is one of his tweets: t##ikding/status/1257316028305960962
+
+By the way, the suffix is <span class="s">``t#``</span>, not <span class="s">``t##``</span>. I added the extra <span class="s">``#``</span> to stop embed-tweet from rendering the tweet.
+</pre></div>
+<p>The embed-tweet plugin will automatically convert it to an embedded tweet:</p>
+<div class="highlight"><pre><span></span>This article is from <a href="https://twitter.com/ikding">@ikding</a>
+
+And here is one of his tweets: <blockquote class="twitter-tweet" align="center"><a href="https://twitter.com/ikding/status/1257316028305960962">Tweet of ikding/1257316028305960962</a></blockquote>
+</pre></div>
+<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'ikding'; // required: replace example with your forum shortname
+
+            var disqus_config = function () {
+                this.language = "en";
+
+                        this.page.identifier = '2020-09-15-pelican-embed-tweet-plugin';
+                        this.page.url = 'https://ikding.github.io/pelican-embed-tweet-plugin.html';
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<div id="aboutme">
+        <p>
+            <img width="100%" class="img-thumbnail" src="https://ikding.github.io//images/profile.jpg"/>
+        </p>
+    <p>
+      <strong>About I-Kang Ding</strong><br/>
+        
+Doing data mining on mining data at KoBold Metals.
+Stanford Engineering Ph.D.
+<br/>
+<br/>
+Interested in intersection of machine learning, data science, and climate change.
+
+    </p>
+</div><!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+  <ul class="list-group" id="social">
+    <li class="list-group-item"><a href="https://github.com/ikding"><i class="fa fa-github-square fa-lg"></i> GitHub</a></li>
+    <li class="list-group-item"><a href="https://twitter.com/ikding"><i class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+    <li class="list-group-item"><a href="https://www.linkedin.com/in/ikding"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+  </ul>
+</li>
+<!-- End Sidebar/Social -->
+
+<!-- Sidebar/Github -->
+<li class="list-group-item">
+  <h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+  <div id="gh_repos">
+    <p class="list-group-item">Status updating...</p>
+  </div>
+  <a href="https://github.com/ikding">@ikding</a> on GitHub
+</li>
+<!-- End Sidebar/Github -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2020 I-Kang Ding
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="https://ikding.github.io/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://ikding.github.io/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="https://ikding.github.io/theme/js/respond.min.js"></script>
+
+
+
+<!-- GitHub JS Code -->
+<script type="text/javascript">
+$(document).ready(function () {
+  if (!window.jXHR) {
+    var jxhr = document.createElement('script');
+    jxhr.type = 'text/javascript';
+    jxhr.src = 'https://ikding.github.io/theme/js/jXHR.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(jxhr, s);
+  }
+
+  github.showRepos({
+    user: 'ikding',
+    count: 3,
+    skip_forks: true,
+    target: '#gh_repos'
+  });
+});
+</script>
+<script src="https://ikding.github.io/theme/js/github.js" type="text/javascript"></script>
+<!-- End GitHub JS Code -->
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'ikding'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-19568221-4']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+
+</body>
+</html>
