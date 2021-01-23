@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Tackling climate change with ML (ICLR Workshop 2020) - day 5 - I-Kang's Notes</title>
+    <title>Talk: Data Scientist Job Search (in USA) - I-Kang's Notes</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,20 +9,20 @@
 
 
 
-<link rel="canonical" href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-5.html">
+<link rel="canonical" href="https://ikding.github.io/data-science-job-search-talk.html">
 
         <meta name="author" content="I-Kang Ding" />
-        <meta name="keywords" content="climate_tech,data_science" />
-        <meta name="description" content="Notes from day 5 (Cross-cutting Methods Day) of ICLR Workshop - Tackling Climate Change with Machine Learning on 2020-04-30." />
+        <meta name="keywords" content="career,data_science" />
+        <meta name="description" content="I was invited by the Taiwanese Data Science (TWDS) Meetup Group to give a talk about &#34;Data Science Job Search in USA&#34;. Below is the slide link for those who are interested. Data Science Job Search in USA" />
 
         <meta property="og:site_name" content="I-Kang's Notes" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Tackling climate change with ML (ICLR Workshop 2020) - day 5"/>
-        <meta property="og:url" content="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-5.html"/>
-        <meta property="og:description" content="Notes from day 5 (Cross-cutting Methods Day) of ICLR Workshop - Tackling Climate Change with Machine Learning on 2020-04-30."/>
-        <meta property="article:published_time" content="2020-04-30" />
-            <meta property="article:section" content="climate_tech" />
-            <meta property="article:tag" content="climate_tech" />
+        <meta property="og:title" content="Talk: Data Scientist Job Search (in USA)"/>
+        <meta property="og:url" content="https://ikding.github.io/data-science-job-search-talk.html"/>
+        <meta property="og:description" content="I was invited by the Taiwanese Data Science (TWDS) Meetup Group to give a talk about &#34;Data Science Job Search in USA&#34;. Below is the slide link for those who are interested. Data Science Job Search in USA"/>
+        <meta property="article:published_time" content="2021-01-22" />
+            <meta property="article:section" content="career" />
+            <meta property="article:tag" content="career" />
             <meta property="article:tag" content="data_science" />
             <meta property="article:author" content="I-Kang Ding" />
 
@@ -80,10 +80,10 @@ I-Kang's Notes            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-5.html"
+                    <a href="https://ikding.github.io/data-science-job-search-talk.html"
                        rel="bookmark"
-                       title="Permalink to Tackling climate change with ML (ICLR Workshop 2020) - day 5">
-                        Tackling climate change with ML (ICLR Workshop 2020) - day 5
+                       title="Permalink to Talk: Data Scientist Job Search (in USA)">
+                        Talk: Data Scientist Job Search (in USA)
                     </a>
                 </h1>
             </header>
@@ -93,99 +93,26 @@ I-Kang's Notes            </a>
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2020-04-30T00:00:00-07:00"> 2020-04-30 (Thu)</time>
+        <i class="fa fa-calendar"></i><time datetime="2021-01-22T00:00:00-08:00"> 2021-01-22 (Fri)</time>
     </span>
         <span class="label label-default">Read time</span>
         <span class="published">
-            <i class="fa fa-hourglass"></i> 5 min</span>
+            <i class="fa fa-hourglass"></i> 1 min</span>
 
 
 
 
 
 <span class="label label-default">Tags</span>
-	<a href="https://ikding.github.io/tag/climate_tech.html">climate_tech</a>
+	<a href="https://ikding.github.io/tag/career.html">career</a>
         /
 	<a href="https://ikding.github.io/tag/data_science.html">data_science</a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <img alt="iclr-conference-logo" class="align-center" src="https://iclr.cc/static/admin/img/ICLR-logo.png" />
-<p>Notes from day 5 (Cross-cutting Methods Day) of ICLR Workshop - <a class="reference external" href="https://www.climatechange.ai/ICLR2020_workshop#schedule">Tackling Climate Change with Machine Learning</a> on 2020-04-30.</p>
-<p>The virtual conference spans five days. If you're interested, here are the notes I took for other days.</p>
-<ul class="simple">
-<li><a class="reference external" href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-1.html">Day 1 (Main Workshop)</a></li>
-<li><a class="reference external" href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-2.html">Day 2 (Energy Day)</a></li>
-<li><a class="reference external" href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-3.html">Day 3 (Agriculture, Forestry, and Other Land Use (AFOLU) Day)</a></li>
-<li><a class="reference external" href="https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-4.html">Day 4 (Climate Science and Adaptation Day)</a></li>
-</ul>
-<div class="section" id="incorporating-physics-into-deep-models-with-implicit-layers">
-<h2>Incorporating physics into deep models with implicit layers</h2>
-<p>Zico Kolter, CMU</p>
-<p>Abstract: Despite their wide applicability, many deep networks often fail to exactly capture simple &quot;known&quot; features of real-world data sets, such as those governed by physical laws.  In this talk, I'll present methods for integrating constraints such as physical simulation requirements directly into the predictions of a deep network.  Our tool for doing this will be the use of so-called implicit layers in deep models, layers that are defined implicitly in terms of conditions we would like them to satisfy, rather than via an explicit computation graph.  I'll discuss how we can use these layers to embed (exact) physical simulation within deep networks, discuss several related approaches, and highlight directions for future work.</p>
-<p>ML background</p>
-<ul class="simple">
-<li>A common theme in applying ML models to real world settings: it is often very useful to have some physics-based model of system dynamics</li>
-<li>E.g. if we were to use a generic NN to predict how the input / output of your car would work, it will not go well</li>
-<li>Physics simulation is hard (strict constraints, collisions, etc) but also (to a first approximation really well understood</li>
-<li>Let's integrate what we know about physics (basic Newtonian mechanics) inside of more complex deep architecture</li>
-<li>How do we actually do this?</li>
-</ul>
-<p>Implicit model in deep learning</p>
-<ul class="simple">
-<li>Implicit layers // implicit models: certain layer will have a “hard constraint” about wha it does - very intentional, very constrained.</li>
-<li>Very lucrative (in terms of publications)!</li>
-<li>It turns out that any structure you want to incorporate to a NN has some well defined functions of f(x, y; theta) = 0</li>
-<li>Example: physics, optimizations can be expressed in this way.</li>
-<li>Problem: ML training typically use gradient based methods to train your NN. But when you have an implicit layer, the gradient based methods (back prop, etc) doesn't always work</li>
-<li>Implicit differentiation, goes back many decades. This powerful tool will allow us to use the physics based equations in our back prop.</li>
-<li>Important point: we are not advocating to unroll the solution procedure of the implicit function, then backdrop through that. Can work, but very it's memory intensive, creates long graphs</li>
-<li>Instead: find exact solution, and backprop (analytically) through it<ul>
-<li>Much more memory efficient</li>
-<li>Often effective “free” after computing forward pass</li>
-</ul>
-</li>
-</ul>
-<p>Learning with differentiable physics</p>
-<ul class="simple">
-<li>Incorporate a differentiable physics simulator within an implicit layer in a deep network: enforce the requirement that these physical elements of the network</li>
-<li>Three steps to build differentiable physics engine<ul>
-<li>Express equations of rigid body motion as linear complementary problem (LCP)</li>
-<li>Apply implicit function theorem</li>
-<li>Efficiency computing backprop</li>
-</ul>
-</li>
-<li>Application: system identification (ball collision with chain)</li>
-<li>Application: simulation for visual dynamics</li>
-<li>Application: model-based RL for breakout (Atari break out game)</li>
-</ul>
-<p>Incorporating decision-making into deep models</p>
-<ul class="simple">
-<li>The real cost in sustainability domains: in training ML models, we have an internal loss function to get our model trained. However, for ML models in the real world, the loss function you use in model training may not reflect the real cost.</li>
-<li>Reference: OptNet - differentiation through a convex QP solver</li>
-</ul>
-</div>
-<div class="section" id="fireside-chat-on-remote-sensing-and-artificial-intelligence">
-<h2>Fireside chat on remote sensing and artificial intelligence</h2>
-<p>Speakers:</p>
-<ul class="simple">
-<li>Victoria Coleman (Atlas AI)</li>
-<li>Ram Rajagopal (Stanford)</li>
-<li>Rose Rustowicz (Descartes Labs)</li>
-<li>Jack Kelly (Open Climate Fix)</li>
-<li>Grega Milcinski (Sinergise)</li>
-<li>Ram - Remote sensing: there is a lot of need to validate what's going on in the field. Given the imperfect information you get from remote sensing, how to you make informed decisions based off uncertainty?</li>
-<li>Computer vision is a more well developed problem for natural images (photos of things in real world), but the remote sensing data is different - much fewer labelled data, things are closely packed together, features are smaller - it may not be as much a “solved” problem as people think.</li>
-<li>Random Forest does just as well as deep learning for agriculture, and much more scalable</li>
-<li>Victoria: in agricultural applications, random forest can achieve equal or better result as deep neural networks. Do you have any insights on what makes agricultural application different from other remote sensing applications that makes it much suitable to be handled with random forest models? Also, what are the feature (columns) you feed into the RF model? Would it be just the RGB channel values at each pixel (so # of features == # of pixels x # of channels)?<ul>
-<li>Answer: I suspect it's because we do multiple passes which breaks down a complex problem into a number of simpler ones that RF works well for. Crop classification is done at the pixel level using both spectral and temporal features.</li>
-</ul>
-</li>
-<li>How does your model influence the world? (e.g. solar production forecast) - say you have a perfect model, the way that the model can make impact on climate change is through convincing stakeholders (e.g. grid operators) that they can use the model, and the model is trust-worthy.</li>
-<li>Jack Kelly: we're currently entirely focused on PV nowcasting.  In the near future, we hope to release a dataset of satellite imagery &amp; solar PV data for the UK, and we'd love for people to work on that!  We'll also be releasing more open source tools to work with the data.</li>
-<li>Descartes platform has been super helpful for researchers and students to use that platform.</li>
-</ul>
-</div>
+                <p>I was invited by the Taiwanese Data Science (TWDS) Meetup Group to give a talk about &quot;Data Science Job Search in USA&quot;. Below is the slide link for those who are interested.</p>
+<p><a class="reference external" href="https://ikding.github.io/data_sci_job_search/">Data Science Job Search in USA</a></p>
+<img alt="fb-event-page" class="align-center" src="https://user-images.githubusercontent.com/7269845/105565688-f2bd8800-5cdc-11eb-803b-dfcad6d92ad6.jpg" style="width: 500px;" />
 <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
             <!-- /.entry-content -->
@@ -201,8 +128,8 @@ I-Kang's Notes            </a>
             var disqus_config = function () {
                 this.language = "en";
 
-                        this.page.identifier = '2020-04-30-tackling-climate-change-with-ml-iclr-day-5';
-                        this.page.url = 'https://ikding.github.io/tackling-climate-change-with-ml-iclr-day-5.html';
+                        this.page.identifier = '2021-01-22-data-science-job-search-talk';
+                        this.page.url = 'https://ikding.github.io/data-science-job-search-talk.html';
             };
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
