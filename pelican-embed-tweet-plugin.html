@@ -107,7 +107,7 @@ I-Kang's Notes            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>In this article, I wrote about how to use pelican <tt class="docutils literal">embed_tweet</tt> plugin in Pelican static site generator, which is useful for embedding tweet into your own blog posts, like so: <blockquote class="twitter-tweet" align="center"><a href="https://twitter.com/ikding/status/1306120884646674438">Tweet of ikding/1306120884646674438</a></blockquote></p>
+                <p>In this article, I wrote about how to use pelican <tt class="docutils literal">embed_tweet</tt> plugin in Pelican static site generator, which is useful for embedding tweet into your own blog posts, like so: <blockquote class="twitter-tweet" align="center" data-conversation="none"><a href="https://twitter.com/ikding/status/1306120884646674438">Tweet of ikding/1306120884646674438</a></blockquote></p>
 <p>In the beginning of 2020, I started a goal of writing more professionally. I did not like the idea of putting my blog articles in pay-wall sites such as medium, so I decided to use my own static site generator and host my blog in GitHub pages.</p>
 <p>The <a class="reference external" href="https://www.fullstackpython.com/static-site-generator.html">static site generator</a>, I picked is <a class="reference external" href="https://blog.getpelican.com">Pelican</a>. The pelican plugin I want to talk in this post is the <a class="reference external" href="https://github.com/lqez/pelican-embed-tweet">embed-tweet</a> plugin, which is useful for embedding tweet into your own blog posts. (If you're interested in how I landed on Pelican, I talked about that briefly over in <a class="reference external" href="https://ikding.github.io/pelican-readtime-plugin.html">Pelican Readtime Plugin</a> article.)</p>
 <p>It's a short and sweet plugin, but it took some time to make it work with my site. So I figured that I'll writeup what worked for me, in case it helps others in the future.</p>
@@ -132,7 +132,7 @@ By the way, the suffix is <span class="s">``t#``</span>, not <span class="s">``t
 <p>The embed-tweet plugin will automatically convert it to an embedded tweet:</p>
 <div class="highlight"><pre><span></span>This article is from <a href="https://twitter.com/ikding">@ikding</a>
 
-And here is one of his tweets: <blockquote class="twitter-tweet" align="center"><a href="https://twitter.com/ikding/status/1306120884646674438">Tweet of ikding/1306120884646674438</a></blockquote>
+And here is one of his tweets: <blockquote class="twitter-tweet" align="center" data-conversation="none"><a href="https://twitter.com/ikding/status/1306120884646674438">Tweet of ikding/1306120884646674438</a></blockquote>
 </pre></div>
 <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
